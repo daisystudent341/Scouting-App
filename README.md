@@ -2,8 +2,9 @@
 QR Code Server Frontend and Backend for Team 341 Scouting App
 
 # Set-up
-- Install python 3.9
-- Install pip for python 3.9
+- Run the ```lets-encrypt-r3.cer``` file
+- Install python 3.9 (if not already installed)
+- Install pip for python 3.9 (if not already installed)
 - Run the following commands (found in dependencies.txt):
   - ```pip install opencv-python```
   - ```pip install PyQt5```
