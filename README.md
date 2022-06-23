@@ -9,7 +9,7 @@ QR Code Server Frontend and Backend for Team 341 Scouting App
   - ```pip install opencv-python```
   - ```pip install PyQt5```
 - Run ```ScoutingApp.exe```
-- Enter password for mongodb data read/write perms (contact Kevin for password for Team 341's)
+- Enter password for mongodb data read/write perms (contact me for password for Team 341's)
 - A new window should pop up and you should be set!
 
 # Features
