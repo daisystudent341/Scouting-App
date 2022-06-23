@@ -1,4 +1,4 @@
-# Scouting-App-QR-and-Server-Handler
+# Scouting App QR and Server Handler
 QR Code Server Frontend and Backend for Team 341 Scouting App
 
 # Set-up
