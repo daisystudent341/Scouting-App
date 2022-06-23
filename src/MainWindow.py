@@ -24,6 +24,9 @@ with open('./bin/offline_buffer.pkl', 'rb') as f:
     loaded_dict_arr = pickle.load(f)
 
 
+class TextObject:
+    txt = ""
+    formatting = ""
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -89,7 +92,9 @@ class MainWindow(QWidget):
         self.FeedLabel.setPixmap(QPixmap.fromImage(Image))
 
     def StatusUpdateSlot(self, Status):
-        self.StatusLabel.setText(Status)
+        self.StatusLabel.setStyleSheet(Status.formatting)
+        self.StatusLabel.setText(Status.txt)
+
        
 
     def NetworkStatusUpdateSlot(self, Status):
@@ -143,9 +148,11 @@ class MainThread(QThread):
         sys.exit(App.exec())
 
 
+
+
 class DataThread(QThread):
 
-    StatusUpdate = pyqtSignal(str)
+    StatusUpdate = pyqtSignal(TextObject)
     
     def run(self):
         self.ThreadActive = True
@@ -153,16 +160,21 @@ class DataThread(QThread):
             item = q.get()
             ret, data = dataHandler.add_entry(item)
             response = str()
+            formatting = "QLabel { color : red; }"
             if ret == -1:
-                response = "Error: Could not upload data to server. Saving locally... " + str(data)
+                response = "Error: Could not upload data to server. Saving locally if not already... " + str(data)
                 loaded_dict_arr.add(str(item))
             elif ret == -2:
                 response = "Error: Invalid QR code"
             else:
-                response = "Uploaded data! Also saving locally... " + str(data)
+                formatting = "QLabel { color : green; }"
+                response = "Uploaded data online! Saving locally if not already... " + str(data)
                 loaded_dict_arr.add(str(item))
-        
-            self.StatusUpdate.emit(response)
+
+            textObj = TextObject()
+            textObj.txt = response
+            textObj.formatting = formatting
+            self.StatusUpdate.emit(textObj)
             q.task_done()
 
             time.sleep(0.03)
