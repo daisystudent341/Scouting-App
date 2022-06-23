@@ -14,14 +14,16 @@ Frontend and Backend for Team 341 Scouting App
    - Run ```ScoutingApp.exe```
      - Enter password for mongodb data read/write perms (contact me for password for Team 341's)
      - A new window should pop up and you should be set!
+     
    # Features
-    - QR code scanner for scouting data
-    - Cloud synchronization with mongodb
-    - Local saves without access to internet
-    - Local saves can be synched up to database whenever user prompts
+   - QR code scanner for scouting data
+   - Cloud synchronization with mongodb
+   - Local saves without access to internet
+   - Local saves can be synched up to database whenever user prompts
+   
    # Coming up...
-    - Data visualization
-    - Sync from server to local storage
+   - Data visualization
+   - Sync from server to local storage
 
 # Tablets
-    # App in progress...
+   # App in progress...
