@@ -1,2 +1,22 @@
 # Scouting-App-Server-Handler
 QR Code Server Frontend and Backend for Team 341 Scouting App
+
+# Set-up
+- Install python 3.9
+- Install pip for python 3.9
+- Run the following commands (found in dependencies.txt):
+  - ```pip install opencv-python```
+  - ```pip install PyQt5```
+- Run ```ScoutingApp.exe```
+- Enter password for mongodb data read/write perms (contact Kevin for password for Team 341)
+- A new window should pop up and you should be set!
+
+# Features
+- QR code scanner for scouting data
+- Cloud synchronization with mongodb
+- Local saves without access to internet
+- Local saves can be synched up to database whenever user prompts
+
+# Coming up...
+- Data visualization
+- Sync from server to local storage
