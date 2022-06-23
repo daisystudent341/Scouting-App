@@ -21,9 +21,10 @@ Frontend and Backend for Team 341 Scouting App
    - Local saves without access to internet
    - Local saves can be synched up to database whenever user prompts
    
-   ## Coming up... ##
+   ## Things to work on ##
    - Data visualization
    - Sync from server to local storage
+   - Appearance
 
 # Tablets
    App in progress...
