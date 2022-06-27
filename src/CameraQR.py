@@ -1,7 +1,7 @@
 import cv2
 
 
-class CameraQRGUI:
+class CameraQR:
 
 
     def clearCapture(self, capture):

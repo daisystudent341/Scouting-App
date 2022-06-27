@@ -3,36 +3,40 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 import cv2
-from CameraQR import CameraQRGUI
+from CameraQR import CameraQR
 from DataHandler import DataHandler
 import pickle
 import queue, time
 
-camera = CameraQRGUI()
+camera = CameraQR()
 dataHandler = DataHandler("./src/pass.txt")
 
 q = queue.Queue()
 
 try:
     with open('./bin/offline_buffer.pkl', 'rb') as f:
-        loaded_dict_arr = pickle.load(f)
+        loaded_set = pickle.load(f)
 except FileNotFoundError:
     with open('./bin/offline_buffer.pkl', 'wb') as f:
         pickle.dump(set(), f)
 
 with open('./bin/offline_buffer.pkl', 'rb') as f:
-    loaded_dict_arr = pickle.load(f)
+    loaded_set = pickle.load(f)
 
 
 class TextObject:
     txt = ""
     formatting = ""
 
+    def __init__(self, t = "", f = ""):
+        self.txt = t
+        self.formatting = f
+
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
         
-        
+        self._font = QFont('Times', 12)
 
         self.VBL = QGridLayout()
        
@@ -42,10 +46,20 @@ class MainWindow(QWidget):
 
         self.StatusLabel = QLabel()
         self.StatusLabel.setText("Scan QR code to camera!")
+        self.StatusLabel.setFont(self._font)
        
         self.VBL.addWidget(self.StatusLabel,0,1)
 
+        self.CachedLabel = QLabel()
+        self.VBL.addWidget(self.CachedLabel, 0, 3)
+
+        self.cached_label_message = TextObject("Cached Data\n\n", "QLabel { color : blue; }")
+        self.CachedLabel.setStyleSheet(self.cached_label_message.formatting)
+        self.CachedLabel.setText(self.cached_label_message.txt+dataHandler.format_data_from_set(loaded_set, sort_data=True))
+        self.CachedLabel.setFont(self._font)
+
         self.NetworkStatus = QLabel()
+        self.NetworkStatus.setFont(self._font)
         
         if dataHandler.alive:
             self.NetworkStatus.setStyleSheet("QLabel { color : green; }")
@@ -58,12 +72,18 @@ class MainWindow(QWidget):
 
 
         self.changeCamBTN = QPushButton("Change Camera")
+        self.changeCamBTN.setFont(self._font)
         self.changeCamBTN.clicked.connect(self._changeCam)
         self.VBL.addWidget(self.changeCamBTN,1,0)
 
+        self.saveDataBTN = QPushButton("Cache Data Locally")
+        self.saveDataBTN.setFont(self._font)
+        self.saveDataBTN.clicked.connect(self._saveData)
+        self.VBL.addWidget(self.saveDataBTN,1,3)
 
         self.syncBTN = QPushButton("Sync Offline Data to Server")
-        self.syncBTN.clicked.connect(self._syncOfflineData)
+        self.syncBTN.setFont(self._font)
+        self.syncBTN.clicked.connect(self._syncData)
         self.VBL.addWidget(self.syncBTN,0,2)
 
         self.mainT = MainThread()
@@ -95,6 +115,12 @@ class MainWindow(QWidget):
         self.StatusLabel.setStyleSheet(Status.formatting)
         self.StatusLabel.setText(Status.txt)
 
+        text = self.cached_label_message.txt
+            
+        text += dataHandler.format_data_from_set(loaded_set,sort_data=True)
+            
+        self.CachedLabel.setText(text)
+
        
 
     def NetworkStatusUpdateSlot(self, Status):
@@ -106,18 +132,28 @@ class MainWindow(QWidget):
             self.NetworkStatus.setText("Not connected to server! Local save on.")
         
 
+
     def _changeCam(self):
         camera._incrementCamera()
 
     def closeEvent(self, event:QCloseEvent):
         self.mainT.ThreadActive = False
         with open('./bin/offline_buffer.pkl', 'wb') as f:
-            pickle.dump(loaded_dict_arr, f)
+            pickle.dump(loaded_set, f)
         sys.exit(0)
     
-    def _syncOfflineData(self):
-        for el in loaded_dict_arr:
+    def _syncData(self):
+        for el in loaded_set:
             q.put(el)
+    
+    def _saveData(self):
+        with open('./bin/offline_buffer.pkl', 'wb') as f:
+            pickle.dump(loaded_set, f)
+        
+        self.StatusLabel.setStyleSheet("QLabel { color : green; }")
+        self.StatusLabel.setText("Cached data locally! This also happens every app shutdown.\nNo need to press this to Sync Offline Data to Server either.")
+        
+           
         
 
 class MainThread(QThread):
@@ -136,7 +172,7 @@ class MainThread(QThread):
             if data:
                 q.put(data)
             
-            time.sleep(0.03)
+            time.sleep(0.1)
                 
             
         
@@ -158,26 +194,26 @@ class DataThread(QThread):
         self.ThreadActive = True
         while self.ThreadActive:
             item = q.get()
-            ret, data = dataHandler.add_entry(item)
-            response = str()
-            formatting = "QLabel { color : red; }"
-            if ret == -1:
-                response = "Error: Could not upload data to server. Saving locally if not already... " + str(data)
-                loaded_dict_arr.add(str(item))
-            elif ret == -2:
-                response = "Error: Invalid QR code"
-            else:
-                formatting = "QLabel { color : green; }"
-                response = "Uploaded data online! Saving locally if not already... " + str(data)
-                loaded_dict_arr.add(str(item))
+            if item is not None:
+                ret, data = dataHandler.add_entry(item)
+                response = str()
+                formatting = "QLabel { color : red; }"
+                if ret == -1:
+                    response = "Error: Could not upload data to server. Saving locally if not already... " + str(data)
+                    loaded_set.add(str(item))
+                elif ret == -2:
+                    response = "Error: Invalid QR code"
+                else:
+                    formatting = "QLabel { color : green; }"
+                    response = "Uploaded data online! Saving locally if not already... " + str(data)
+                    loaded_set.add(str(item))
+                textObj = TextObject()
+                textObj.txt = response
+                textObj.formatting = formatting
+                self.StatusUpdate.emit(textObj)
+                q.task_done()
 
-            textObj = TextObject()
-            textObj.txt = response
-            textObj.formatting = formatting
-            self.StatusUpdate.emit(textObj)
-            q.task_done()
-
-            time.sleep(0.03)
+            time.sleep(0.05)
             
         
     def stop(self):
