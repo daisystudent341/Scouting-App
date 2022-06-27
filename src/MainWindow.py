@@ -52,6 +52,7 @@ class MainWindow(QWidget):
 
         self.CachedLabel = QTableWidget(self)
         self.CachedLabel.setColumnCount(len(dataHandler._stored_data))
+        self.CachedLabel.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.COLUMN_WIDTH = 125
         self.PADDING = 80
         self.cached_label_message = TextObject("Cached Data", "QLabel { color : blue; }")
