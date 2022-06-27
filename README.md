@@ -20,6 +20,7 @@ Frontend and Backend for Team 341 Scouting App
    - Cloud synchronization with mongodb
    - Local saves without access to internet
    - Local saves can be synched up to database whenever user prompts
+   - View local cache data
    
    ## Things to work on ##
    - Data visualization
