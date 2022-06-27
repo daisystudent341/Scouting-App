@@ -41,7 +41,6 @@ class CameraQR:
         self._detector = cv2.QRCodeDetector()
       
         self._data = None
-        self._leave_key = 'q'
         self._cur_img = None
         
     
