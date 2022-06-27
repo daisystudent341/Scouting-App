@@ -26,8 +26,8 @@ class DataHandler:
 
       
         return ret
-    
 
+        
 
     def format_data_from_set(self, data : set(), sort_data=False):
         text = ""
@@ -35,15 +35,20 @@ class DataHandler:
 
         for raw_entry in data:
             lst.append(self._unpackData(raw_entry, castValToInt=True))
-            
+
         if sort_data:
-            lst = sorted(lst, key=lambda d : d[self._stored_data[0]])
+            lst = sorted(lst, key=lambda d : d[self._stored_data[0]], reverse=True)
             
         for entry in lst:
-            for dataType, val in entry.items():
-                text += dataType + ": " + str(val) + ",  "                
-            text = text[:-3]
-            text += '\n'
+            text += self.format_data_from_dict_datapoint(entry)+'\n'
+        return text
+
+    def format_data_from_dict_datapoint(self, data : dict()):
+        text = ""
+       
+        for dataType, val in data.items():
+            text += dataType + ": " + str(val) + ",  "
+        text = text[:-3]
         return text
 
     def __init__(self, pass_file_loc):

@@ -199,13 +199,13 @@ class DataThread(QThread):
                 response = str()
                 formatting = "QLabel { color : red; }"
                 if ret == -1:
-                    response = "Error: Could not upload data to server. Saving locally if not already... " + str(data)
+                    response = "Error: Could not upload data to server. Saving locally if not already...\n" + dataHandler.format_data_from_dict_datapoint(data)
                     loaded_set.add(str(item))
                 elif ret == -2:
                     response = "Error: Invalid QR code"
                 else:
                     formatting = "QLabel { color : green; }"
-                    response = "Uploaded data online! Saving locally if not already... " + str(data)
+                    response = "Uploaded data online! Saving locally if not already...\n" + dataHandler.format_data_from_dict_datapoint(data)
                     loaded_set.add(str(item))
                 textObj = TextObject()
                 textObj.txt = response
