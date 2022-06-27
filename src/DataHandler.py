@@ -27,21 +27,25 @@ class DataHandler:
       
         return ret
 
+  
+    def unpack_raw_datapoint_to_list(self, data):
+        data = data.split(",")
+        for i in range(len(data)):
+            data[i] = int(data[i])
+        
+        return data
         
 
-    def format_data_from_set(self, data : set(), sort_data=False):
-        text = ""
+    def unpack_raw_data_from_set(self, data : set(), sort_data=False):
         lst = []
 
         for raw_entry in data:
-            lst.append(self._unpackData(raw_entry, castValToInt=True))
+            lst.append(self.unpack_raw_datapoint_to_list(raw_entry))
 
         if sort_data:
-            lst = sorted(lst, key=lambda d : d[self._stored_data[0]], reverse=True)
-            
-        for entry in lst:
-            text += self.format_data_from_dict_datapoint(entry)+'\n'
-        return text
+            lst.sort()
+
+        return lst
 
     def format_data_from_dict_datapoint(self, data : dict()):
         text = ""

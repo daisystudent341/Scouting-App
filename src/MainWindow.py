@@ -39,7 +39,7 @@ class MainWindow(QWidget):
         self._font = QFont('Times', 12)
 
         self.VBL = QGridLayout()
-       
+        self.setLayout(self.VBL)
 
         self.FeedLabel = QLabel()
         self.VBL.addWidget(self.FeedLabel,0,0)
@@ -47,16 +47,23 @@ class MainWindow(QWidget):
         self.StatusLabel = QLabel()
         self.StatusLabel.setText("Scan QR code to camera!")
         self.StatusLabel.setFont(self._font)
-       
         self.VBL.addWidget(self.StatusLabel,0,1)
 
-        self.CachedLabel = QLabel()
-        self.VBL.addWidget(self.CachedLabel, 0, 3)
 
-        self.cached_label_message = TextObject("Cached Data\n\n", "QLabel { color : blue; }")
-        self.CachedLabel.setStyleSheet(self.cached_label_message.formatting)
-        self.CachedLabel.setText(self.cached_label_message.txt+dataHandler.format_data_from_set(loaded_set, sort_data=True))
+        self.CachedLabel = QTableWidget(self)
+        self.CachedLabel.setColumnCount(len(dataHandler._stored_data))
+        self.COLUMN_WIDTH = 125
+        self.PADDING = 80
+        self.cached_label_message = TextObject("Cached Data", "QLabel { color : blue; }")
+        self.CachedLabel.setColumnCount(len(dataHandler._stored_data))
+        self.CachedLabel.setMinimumWidth(self.COLUMN_WIDTH * len(dataHandler._stored_data) + self.PADDING)
         self.CachedLabel.setFont(self._font)
+        self._updateCacheTable()
+        self.TableLayout = QVBoxLayout()
+        self.TableLayout.addWidget(self.CachedLabel)
+        self.VBL.addLayout(self.TableLayout,0,3)
+        
+
 
         self.NetworkStatus = QLabel()
         self.NetworkStatus.setFont(self._font)
@@ -107,7 +114,6 @@ class MainWindow(QWidget):
         self.setLayout(self.VBL)
         self.name = "QR Code and Data Handler"
         self.setWindowTitle(self.name)
-
     def ImageUpdateSlot(self, Image):
         self.FeedLabel.setPixmap(QPixmap.fromImage(Image))
 
@@ -115,11 +121,7 @@ class MainWindow(QWidget):
         self.StatusLabel.setStyleSheet(Status.formatting)
         self.StatusLabel.setText(Status.txt)
 
-        text = self.cached_label_message.txt
-            
-        text += dataHandler.format_data_from_set(loaded_set,sort_data=True)
-            
-        self.CachedLabel.setText(text)
+        self._updateCacheTable()           
 
        
 
@@ -153,8 +155,18 @@ class MainWindow(QWidget):
         self.StatusLabel.setStyleSheet("QLabel { color : green; }")
         self.StatusLabel.setText("Cached data locally! This also happens every app shutdown.\nNo need to press this to Sync Offline Data to Server either.")
         
-           
+    def _updateCacheTable(self):
+        self.CachedLabel.setRowCount(len(loaded_set))
+
+        self.CachedLabel.setHorizontalHeaderLabels(dataHandler._stored_data)
         
+        lst = dataHandler.unpack_raw_data_from_set(loaded_set, sort_data=True)
+        
+        for i, entry in enumerate(lst):
+            self.CachedLabel.setColumnWidth(i, self.COLUMN_WIDTH)
+            for j, val in enumerate(entry):
+                self.CachedLabel.setItem(i, j, QTableWidgetItem(str(val)))
+         
 
 class MainThread(QThread):
     ImageUpdate = pyqtSignal(QImage)
