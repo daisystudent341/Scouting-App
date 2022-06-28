@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_HighMissedMinus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="672dp"
+        android:layout_marginTop="80dp"
+        android:text="-"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_HighMissedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="90dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_HighMissedPlus"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMissedMinus"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <Button
+        android:id="@+id/button_HighMissedPlus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="1008dp"
+        android:layout_marginTop="76dp"
+        android:text="+"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_LowMissedPlus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="1012dp"
+        android:layout_marginTop="332dp"
+        android:text="+"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_Low_Missed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="628dp"
+        android:text="Low Missed"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="265dp" />
+
+    <TextView
+        android:id="@+id/text_Low_Missed_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="728dp"
+        android:text="0"
+        android:textSize="90dp"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="340dp" />
+
+    <Button
+        android:id="@+id/button_LowMissedMinus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="676dp"
+        android:layout_marginTop="336dp"
+        android:text="-"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_High_Missed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="624dp"
+        android:text="High Missed"
+        android:textSize="50dp"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="9dp" />
+
+    <Button
+        android:id="@+id/button_HighPlus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginTop="68dp"
+        android:text="+"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_LowPlus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginTop="320dp"
+        android:text="+"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_LowValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="90dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_LowPlus"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toEndOf="@+id/button_lowMinus"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <TextView
+        android:id="@+id/text_lowGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Goal"
+        android:textSize="50dp"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <Button
+        android:id="@+id/button_lowMinus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="320dp"
+        android:text="-"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_HighMinus"
+        android:layout_width="154dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:text="-"
+        android:textSize="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_HighGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Goal"
+        android:textSize="50dp"
+
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/text_HighValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="90dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_HighPlus"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/button_HighMinus"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <TextView
+        android:id="@+id/text_Autonomous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autonomous"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <TextView
+        android:id="@+id/text_MatchNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match Number"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="560dp" />
+
+    <TextView
+        android:id="@+id/text_TeamScouting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Scouting"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="642dp" />
+
+    <TextView
+        android:id="@+id/text_ScoutName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scout Name"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="600dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox_Taxi"
+        android:layout_width="205dp"
+        android:layout_height="130dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Taxi"
+        android:textSize="50dp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox_OtherColor"
+        android:layout_width="267dp"
+        android:layout_height="160dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Interacts with other team's cargo"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="964dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <Button
+        android:id="@+id/button_teleop"
+        android:layout_width="234dp"
+        android:layout_height="111dp"
+        android:text="Teleop"
+        android:textSize="40dp"
+        tools:layout_editor_absoluteX="980dp"
+        tools:layout_editor_absoluteY="664dp" />
+
+    <Button
+        android:id="@+id/button_quit"
+        android:layout_width="182dp"
+        android:layout_height="113dp"
+        android:text="Quit"
+        android:textSize="50dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="671dp" />
+
+    <Button
+        android:id="@+id/button_Submit"
+        android:layout_width="182dp"
+        android:layout_height="113dp"
+        android:text="Submit"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="240dp"
+        tools:layout_editor_absoluteY="671dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
