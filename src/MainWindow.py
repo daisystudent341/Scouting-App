@@ -53,11 +53,11 @@ class MainWindow(QWidget):
         self.CachedLabel = QTableWidget(self)
         self.CachedLabel.setColumnCount(len(dataHandler._stored_data))
         self.CachedLabel.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.COLUMN_WIDTH = 125
+        self.COLUMN_WIDTH = 140
         self.PADDING = 80
         self.cached_label_message = TextObject("Cached Data", "QLabel { color : blue; }")
         self.CachedLabel.setColumnCount(len(dataHandler._stored_data))
-        self.CachedLabel.setMinimumWidth(self.COLUMN_WIDTH * len(dataHandler._stored_data) + self.PADDING)
+        self.CachedLabel.setMinimumWidth(self.COLUMN_WIDTH * min(3,len(dataHandler._stored_data)) + self.PADDING)
         self.CachedLabel.setFont(self._font)
         self._updateCacheTable()
         self.TableLayout = QVBoxLayout()
@@ -183,7 +183,9 @@ class MainThread(QThread):
             data = camera.getRawData()
             
             if data:
-                q.put(data)
+                data = dataHandler.unpack_raw_str(data)
+                for el in data:
+                    q.put(el)
             
             time.sleep(0.1)
                 

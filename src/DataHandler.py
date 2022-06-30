@@ -1,25 +1,21 @@
+from calendar import day_abbr
 from pymongo import MongoClient
-import pymongo
 
 class DataHandler:
          
 
-    def _unpackData(self, data, castValToInt=False):
+    def _unpackData(self, data):
         
         data = str(data)
-        data = data.split(",")
+        data = data.split(self.SUB_SEP)
         if len(data) is not len(self._stored_data):
             return None
         
         ret = dict()
         
         for i, val in enumerate(self._stored_data):
-            if not data[i].isnumeric():
-                return None
-            if castValToInt:
-                datapoint = int(data[i])
-            else:
-                datapoint = data[i]
+            datapoint = data[i]
+           
             temp = {val : datapoint}
 
             ret.update(temp)
@@ -27,16 +23,17 @@ class DataHandler:
       
         return ret
 
+    def unpack_raw_str(self, data : str):
+        data = str(data)
+        return data.split(self.SEP)
   
-    def unpack_raw_datapoint_to_list(self, data):
-        data = data.split(",")
-        for i in range(len(data)):
-            data[i] = int(data[i])
         
-        return data
+    def unpack_raw_datapoint_to_list(self, data):
+       
+        return data.split(self.SUB_SEP)
         
 
-    def unpack_raw_data_from_set(self, data : set(), sort_data=False):
+    def unpack_raw_data_from_set(self, data : set(), sort_data=False, reverse=True):
         lst = []
 
         for raw_entry in data:
@@ -44,7 +41,8 @@ class DataHandler:
 
         if sort_data:
             lst.sort()
-
+        if reverse:
+            lst.reverse()
         return lst
 
     def format_data_from_dict_datapoint(self, data : dict()):
@@ -58,8 +56,9 @@ class DataHandler:
     def __init__(self, pass_file_loc):
         self._pass = open(pass_file_loc, "r").read()
         self.alive = True
-        
-        self._stored_data = ['match', 'auton_balls_scored']
+        self.SEP = '§'
+        self._stored_data = ['Match', 'Scout', 'Team', 'High Scored Auton', 'High Missed Auton', 'Low Scored Auton', 'Low Missed Auton', 'Taxi', 'Interacts with other team\'s cargo', 'High Scored Teleop', 'High Missed Teleop', 'Low Scored Teleop', 'Low Missed Teleop', 'Climb Time (sec)', 'Climb Level']
+        self.SUB_SEP = '¦'
         try:
             self._client = MongoClient(f"mongodb+srv://mod:{self._pass}@cluster0.7pmqtxc.mongodb.net/?retryWrites=true&w=majority", socketTimeoutMS=500, connectTimeoutMS=500, serverSelectionTimeoutMS=50)
             self._match_data = self._client.data.matches
@@ -71,6 +70,7 @@ class DataHandler:
 
     def add_entry(self, data):
         data = self._unpackData(data)
+        print(data)
         if data and self.alive:
             try:
                 self._match_data.replace_one(data, data, upsert=True)
