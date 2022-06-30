@@ -6,29 +6,42 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import com.example.scoutingapp.MainActivity;
 import com.example.scoutingapp.R;
-import com.example.scoutingapp.databinding.ActivityMainBinding;
+import com.example.scoutingapp.databinding.HomeBinding;
 
 
-public class HomeFragment {
-    private ActivityMainBinding binding;
+public class HomeFragment  extends Fragment {
+    private HomeBinding binding;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = ActivityMainBinding.inflate(inflater, container, false);
+        binding = HomeBinding.inflate(inflater, container, false);
 
         Button bViewData = binding.buttonData;
         bViewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: create view data page
+                MainActivity.navController.navigate(new NavDirections() {
+                    @Override
+                    public int getActionId() {
+                        /* TODO: view data page */
+                        return -1;
+                    }
 
+                    @NonNull
+                    @Override
+                    public Bundle getArguments() {
+                        return null;
+                    }
+                });
             }
 
         });
@@ -36,7 +49,7 @@ public class HomeFragment {
         bScout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NavDirections() {
+                MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
                         return R.id.action_navigation_home_to_inputinformation;
@@ -47,7 +60,7 @@ public class HomeFragment {
                     public Bundle getArguments() {
                         return null;
                     }
-                };
+                });
 
             }
 
@@ -57,7 +70,8 @@ public class HomeFragment {
         bPitScout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NavDirections() {
+
+                MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
                         return R.id.action_navigation_home_to_pitscouting;
@@ -68,15 +82,11 @@ public class HomeFragment {
                     public Bundle getArguments() {
                         return null;
                     }
-                };
-
+                });
             }
 
         });
         return binding.getRoot();
     }
 
-    private void updateEntry() {
-
-    }
 }

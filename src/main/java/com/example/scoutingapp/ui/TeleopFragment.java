@@ -7,13 +7,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 
+import com.example.scoutingapp.MainActivity;
+import com.example.scoutingapp.QR;
 import com.example.scoutingapp.R;
 import com.example.scoutingapp.databinding.TeleopBinding;
-import com.example.scoutingapp.ui.AutonomousFragment;
 
-public class TeleopFragment {
+public class TeleopFragment  extends Fragment {
     private TeleopBinding binding;
 
     private CheckBox cTraversalClimb;
@@ -29,28 +31,7 @@ public class TeleopFragment {
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NavDirections() {
-                    @Override
-                    public int getActionId() {
-                        return R.id.action_navigation_teleop_to_autonomous;
-                    }
-
-                    @NonNull
-                    @Override
-                    public Bundle getArguments() {
-                        return null;
-                    }
-                };
-
-
-            }
-
-        });
-        Button bSubmit = binding.buttonSubmitT;
-        bSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new NavDirections() {
+                MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
                         return R.id.action_navigation_teleop_to_inputinformation;
@@ -61,17 +42,59 @@ public class TeleopFragment {
                     public Bundle getArguments() {
                         return null;
                     }
-                };
+                });
+
 
             }
 
         });
+        Button bSubmit = binding.buttonSubmitT;
+        bSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.navController.navigate(new NavDirections() {
+                    @Override
+                    public int getActionId() {
+                        /* TODO: page to review info page to edit submissions & access QR code */
+                        return -1;
+                    }
 
+                    @NonNull
+                    @Override
+                    public Bundle getArguments() {
+                        return null;
+                    }
+                });
+
+            }
+
+        });
+        Button bBack = binding.buttonAutonomous;
+        bBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.navController.navigate(new NavDirections() {
+                    @Override
+                    public int getActionId() {
+                        return R.id.action_navigation_teleop_to_autonomous;
+                    }
+
+                    @NonNull
+                    @Override
+                    public Bundle getArguments() {
+                        return null;
+                    }
+                });
+
+
+            }
+
+        });
         Button bHighPlus = binding.buttonHighPlusT;
         bHighPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.highScoredTeleop++;
+                QR.currEntry.highScoredTeleop++;
 
             }
 
@@ -80,7 +103,7 @@ public class TeleopFragment {
         bHighMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.highScoredTeleop--;
+                QR.currEntry.highScoredTeleop--;
 
             }
 
@@ -89,7 +112,7 @@ public class TeleopFragment {
         bLowPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.lowScoredTeleop++;
+                QR.currEntry.lowScoredTeleop++;
 
             }
 
@@ -98,7 +121,7 @@ public class TeleopFragment {
         bLowMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.lowScoredTeleop--;
+                QR.currEntry.lowScoredTeleop--;
 
             }
 
@@ -107,7 +130,7 @@ public class TeleopFragment {
         bLowMissedPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.lowMissedTeleop++;
+                QR.currEntry.lowMissedTeleop++;
 
             }
 
@@ -116,7 +139,7 @@ public class TeleopFragment {
         bLowMissedMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.lowMissedTeleop--;
+                QR.currEntry.lowMissedTeleop--;
 
             }
 
@@ -127,7 +150,7 @@ public class TeleopFragment {
             @Override
             public void onClick(View v) {
 
-                AutonomousFragment.currEntry.startClimb();
+                QR.currEntry.startClimb();
             }
 
         });
@@ -137,7 +160,7 @@ public class TeleopFragment {
             @Override
             public void onClick(View v) {
 
-                AutonomousFragment.currEntry.endClimb();
+                QR.currEntry.endClimb();
             }
 
         });
@@ -147,8 +170,8 @@ public class TeleopFragment {
         cNoClimb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.climbLevel = 0;
-                onlyOneChecked(AutonomousFragment.currEntry.climbLevel);
+                QR.currEntry.climbLevel = 0;
+                onlyOneChecked(QR.currEntry.climbLevel);
 
             }
 
@@ -158,8 +181,8 @@ public class TeleopFragment {
         cLowClimb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.climbLevel = 1;
-                onlyOneChecked(AutonomousFragment.currEntry.climbLevel);
+                QR.currEntry.climbLevel = 1;
+                onlyOneChecked(QR.currEntry.climbLevel);
 
             }
 
@@ -169,8 +192,8 @@ public class TeleopFragment {
         cMidClimb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.climbLevel = 2;
-                onlyOneChecked(AutonomousFragment.currEntry.climbLevel);
+                QR.currEntry.climbLevel = 2;
+                onlyOneChecked(QR.currEntry.climbLevel);
 
             }
 
@@ -180,8 +203,8 @@ public class TeleopFragment {
         cHighClimb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.climbLevel = 3;
-                onlyOneChecked(AutonomousFragment.currEntry.climbLevel);
+                QR.currEntry.climbLevel = 3;
+                onlyOneChecked(QR.currEntry.climbLevel);
 
             }
 
@@ -191,8 +214,8 @@ public class TeleopFragment {
         cTraversalClimb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AutonomousFragment.currEntry.climbLevel = 4;
-                onlyOneChecked(AutonomousFragment.currEntry.climbLevel);
+                QR.currEntry.climbLevel = 4;
+                onlyOneChecked(QR.currEntry.climbLevel);
             }
 
 

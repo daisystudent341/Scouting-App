@@ -7,21 +7,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import com.example.scoutingapp.MainActivity;
+import com.example.scoutingapp.QR;
 import com.example.scoutingapp.R;
 import com.example.scoutingapp.databinding.AutonomousBinding;
 
-import java.util.ArrayList;
 
 
-public class AutonomousFragment {
+public class AutonomousFragment  extends Fragment {
     private AutonomousBinding binding;
-
-    private ArrayList<MatchEntry> matchEntries = new ArrayList<MatchEntry>();
-
-    public static MatchEntry currEntry;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class AutonomousFragment {
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NavDirections() {
+                MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
                         return R.id.action_navigation_autonomous_to_inputinformation;
@@ -44,7 +42,7 @@ public class AutonomousFragment {
                     public Bundle getArguments() {
                         return null;
                     }
-                };
+                });
 
 
             }
@@ -54,7 +52,7 @@ public class AutonomousFragment {
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NavDirections() {
+                MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
                         return R.id.action_navigation_autonomous_to_teleop;
@@ -65,7 +63,7 @@ public class AutonomousFragment {
                     public Bundle getArguments() {
                         return null;
                     }
-                };
+                });
 
             }
 
@@ -75,7 +73,7 @@ public class AutonomousFragment {
         bHighPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.highScoredAuton++;
+                QR.currEntry.highScoredAuton++;
 
             }
 
@@ -84,7 +82,7 @@ public class AutonomousFragment {
         bHighMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.highScoredAuton--;
+                QR.currEntry.highScoredAuton--;
 
             }
 
@@ -93,7 +91,7 @@ public class AutonomousFragment {
         bLowPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.lowScoredAuton++;
+                QR.currEntry.lowScoredAuton++;
 
             }
 
@@ -102,7 +100,7 @@ public class AutonomousFragment {
         bLowMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.lowScoredAuton--;
+                QR.currEntry.lowScoredAuton--;
 
             }
 
@@ -111,7 +109,7 @@ public class AutonomousFragment {
         bLowMissedPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.lowMissedAuton++;
+                QR.currEntry.lowMissedAuton++;
 
             }
 
@@ -120,7 +118,7 @@ public class AutonomousFragment {
         bLowMissedMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.lowMissedAuton--;
+                QR.currEntry.lowMissedAuton--;
 
             }
 
@@ -130,7 +128,7 @@ public class AutonomousFragment {
         cInteracts.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    currEntry.interactsWithOtherTeamAuton = cInteracts.isChecked();
+                    QR.currEntry.interactsWithOtherTeamAuton = cInteracts.isChecked();
 
                 }
 
@@ -140,7 +138,7 @@ public class AutonomousFragment {
         cInteracts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currEntry.taxi = cTaxi.isChecked();
+                QR.currEntry.taxi = cTaxi.isChecked();
 
             }
 

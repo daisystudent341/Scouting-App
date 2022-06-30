@@ -1,41 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:paddingTop="?attr/actionBarSize"
+    android:background="@color/purple_200"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
-    <Button
-        android:id="@+id/button_Scout"
-        android:layout_width="1127dp"
-        android:layout_height="144dp"
-        android:text="Scout Matches"
-        android:textSize="69dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="319dp" />
 
-    <Button
-        android:id="@+id/button_PitScout"
-        android:layout_width="1127dp"
-        android:layout_height="144dp"
-        android:text="Pit Scouting"
-        android:textSize="69dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_Scout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_Data"
-        android:layout_width="1127dp"
-        android:layout_height="144dp"
-        android:text="View Data"
-        android:textSize="69dp"
+    <fragment
+        android:id="@+id/nav_host"
+        class="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Scout" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/mobile_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

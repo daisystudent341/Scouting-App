@@ -1,4 +1,6 @@
 package com.example.scoutingapp.ui;
 
-public class PitFragment {
+import androidx.fragment.app.Fragment;
+
+public class PitFragment  extends Fragment {
 }

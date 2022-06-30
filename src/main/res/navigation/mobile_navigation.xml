@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.scoutingapp.ui.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/activity_main" >
+        tools:layout="@layout/home" >
         <action
             android:id="@+id/action_navigation_home_to_pitscouting"
             app:destination="@id/navigation_pitscouting"
