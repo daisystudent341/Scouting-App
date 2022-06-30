@@ -325,7 +325,7 @@
         tools:layout_editor_absoluteY="599dp" />
 
     <Button
-        android:id="@+id/button_StartClimb2"
+        android:id="@+id/button_StartClimb"
         android:layout_width="174dp"
         android:layout_height="74dp"
         android:text="Start Climb"

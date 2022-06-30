@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="240dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/editTextNamePit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textSize="35dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextTeamNumberPit"
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_gravity="center"
+
+                android:hint="Team Number"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What type of drivetrain?" />
+            <CheckBox
+                android:id="@+id/checkBox_Tank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_gravity="center"
+
+                android:text="Tank"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
+                android:id="@+id/checkBox_Swerve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Swerve"
+                android:layout_gravity="center"
+
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_Mecanum"
+                android:layout_gravity="center"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Mecanum"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_Other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Other"
+                android:layout_gravity="center"
+
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <TextView
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How many motors on drivetrain?" />
+            <EditText
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:id="@+id/editMotorNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Motor Number"
+                android:layout_gravity="center"
+
+                android:inputType="number" />
+            <TextView
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="Motor type on drivetrain?" />
+            <CheckBox
+                android:id="@+id/checkBox_Falcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_gravity="center"
+
+                android:text="Falcon"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
+                android:id="@+id/checkBox_NEO"
+                android:layout_gravity="center"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="NEO"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_CIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+
+                android:layout_gravity="center"
+
+                android:text="CIM"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_MiniCIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:layout_gravity="center"
+
+                android:scaleY="2"
+                android:text="Mini CIM"
+                />
+            <TextView
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="How wide is robot when hanging? (inches)" />
+            <EditText
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:id="@+id/editRobotWidthHanging"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_gravity="center"
+
+                android:hint="Robot width (inches)"
+                android:inputType="number" />
+
+            <CheckBox
+                android:id="@+id/checkBox_HighHubPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Can you score in the high hub?"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
+                android:id="@+id/checkBox_LowHubPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Can you score in the low hub?"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:text="What levels can you climb to?" />
+            <CheckBox
+                android:id="@+id/checkBox_LowBarPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Low"
+                android:layout_gravity="center"
+
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
+                android:id="@+id/checkBox_MidBarPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="Mid"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_HighBarPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:layout_gravity="center"
+
+                android:scaleY="2"
+                android:text="High"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_TraversalBarPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_gravity="center"
+
+                android:text="Traversal"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:textSize="35dp"
+
+                android:layout_height="wrap_content"
+                android:text="Do you have vision for scoring balls?" />
+            <CheckBox
+                android:id="@+id/checkBox_NoVision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:layout_gravity="center"
+
+                android:scaleY="2"
+                android:text="No vision"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
+                android:id="@+id/checkBox_Limelight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:layout_gravity="center"
+
+                android:scaleY="2"
+                android:text="Limelight"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_Camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_gravity="center"
+
+                android:text="Camera"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox_Custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:layout_gravity="center"
+
+                android:scaleY="2"
+                android:text="Custom"
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.scoutingapp.ui.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_navigation_home_to_pitscouting"
+            app:destination="@id/navigation_pitscouting"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_home_to_inputinformation"
+            app:destination="@id/navigation_inputinformation"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_pitscouting"
+        android:name="com.example.scoutingapp.ui.PitFragment"
+        android:label="Pit Scouting"
+        tools:layout="@layout/pitscouting">
+        <action
+            android:id="@+id/action_navigation_pitscouting_to_inputinformation"
+            app:destination="@id/navigation_inputinformation"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_teleop"
+        android:name="com.example.scoutingapp.ui.TeleopFragment"
+        android:label="Teleop"
+        tools:layout="@layout/teleop">
+        <action
+            android:id="@+id/action_navigation_teleop_to_inputinformation"
+            app:destination="@id/navigation_inputinformation"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_teleop_to_autonomous"
+            app:destination="@id/navigation_autonomous"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_autonomous"
+        android:name="com.example.scoutingapp.ui.AutonomousFragment"
+        android:label="Autonomous"
+        tools:layout="@layout/autonomous">
+        <action
+            android:id="@+id/action_navigation_autonomous_to_inputinformation"
+            app:destination="@id/navigation_inputinformation"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_autonomous_to_teleop"
+            app:destination="@id/navigation_teleop"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_inputinformation"
+        android:name="com.example.scoutingapp.ui.InputinformationFragment"
+        android:label="Input Information"
+        tools:layout="@layout/pitscouting">
+        <action
+            android:id="@+id/action_navigation_inputinformation_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_inputinformation_to_autonomous"
+            app:destination="@id/navigation_autonomous"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+</navigation>

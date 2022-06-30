@@ -1,0 +1,152 @@
+package com.example.scoutingapp.ui;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+
+import com.example.scoutingapp.R;
+import com.example.scoutingapp.databinding.AutonomousBinding;
+
+import java.util.ArrayList;
+
+
+public class AutonomousFragment {
+    private AutonomousBinding binding;
+
+    private ArrayList<MatchEntry> matchEntries = new ArrayList<MatchEntry>();
+
+    public static MatchEntry currEntry;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+
+        binding = AutonomousBinding.inflate(inflater, container, false);
+
+        Button bQuit = binding.buttonQuit;
+        bQuit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new NavDirections() {
+                    @Override
+                    public int getActionId() {
+                        return R.id.action_navigation_autonomous_to_inputinformation;
+                    }
+
+                    @NonNull
+                    @Override
+                    public Bundle getArguments() {
+                        return null;
+                    }
+                };
+
+
+            }
+
+        });
+        Button bSubmit = binding.buttonSubmit;
+        bSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new NavDirections() {
+                    @Override
+                    public int getActionId() {
+                        return R.id.action_navigation_autonomous_to_teleop;
+                    }
+
+                    @NonNull
+                    @Override
+                    public Bundle getArguments() {
+                        return null;
+                    }
+                };
+
+            }
+
+        });
+
+        Button bHighPlus = binding.buttonHighPlus;
+        bHighPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.highScoredAuton++;
+
+            }
+
+        });
+        Button bHighMinus = binding.buttonHighMinus;
+        bHighMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.highScoredAuton--;
+
+            }
+
+        });
+        Button bLowPlus = binding.buttonLowPlus;
+        bLowPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.lowScoredAuton++;
+
+            }
+
+        });
+        Button bLowMinus = binding.buttonLowMinus;
+        bLowMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.lowScoredAuton--;
+
+            }
+
+        });
+        Button bLowMissedPlus = binding.buttonLowMissedPlus;
+        bLowMissedPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.lowMissedAuton++;
+
+            }
+
+        });
+        Button bLowMissedMinus = binding.buttonLowMissedMinus;
+        bLowMissedMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.lowMissedAuton--;
+
+            }
+
+        });
+
+        CheckBox cInteracts = binding.checkBoxOtherColor;
+        cInteracts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    currEntry.interactsWithOtherTeamAuton = cInteracts.isChecked();
+
+                }
+
+
+        });
+        CheckBox cTaxi = binding.checkBoxTaxi;
+        cInteracts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currEntry.taxi = cTaxi.isChecked();
+
+            }
+
+
+        });
+
+        return binding.getRoot();
+    }
+}

@@ -13,8 +13,20 @@
         android:layout_height="144dp"
         android:text="Scout Matches"
         android:textSize="69dp"
-        tools:layout_editor_absoluteX="63dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="319dp" />
+
+    <Button
+        android:id="@+id/button_PitScout"
+        android:layout_width="1127dp"
+        android:layout_height="144dp"
+        android:text="Pit Scouting"
+        android:textSize="69dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_Scout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_Data"
@@ -22,6 +34,8 @@
         android:layout_height="144dp"
         android:text="View Data"
         android:textSize="69dp"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="509dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_Scout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
