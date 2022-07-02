@@ -74,7 +74,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredAuton++;
-
+                binding.textHighValue.setText(QR.currEntry.highScoredAuton);
             }
 
         });
@@ -83,6 +83,26 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredAuton--;
+                binding.textHighValue.setText(QR.currEntry.highScoredAuton);
+
+            }
+
+        });
+        Button bHighMissedPlus = binding.buttonHighPlus;
+        bHighMissedPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QR.currEntry.highMissedAuton++;
+                binding.textHighMissedValue.setText(QR.currEntry.highMissedAuton);
+            }
+
+        });
+        Button bHighMissedMinus = binding.buttonHighMinus;
+        bHighMissedMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QR.currEntry.highMissedAuton--;
+                binding.textHighMissedValue.setText(QR.currEntry.highMissedAuton);
 
             }
 
@@ -92,7 +112,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredAuton++;
-
+                binding.textLowValue.setText(QR.currEntry.lowScoredAuton);
             }
 
         });
@@ -101,6 +121,8 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredAuton--;
+                binding.textLowValue.setText(QR.currEntry.lowScoredAuton);
+
 
             }
 
@@ -110,6 +132,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedAuton++;
+                binding.textLowMissedValue.setText(QR.currEntry.lowMissedAuton);
 
             }
 
@@ -119,6 +142,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedAuton--;
+                binding.textLowMissedValue.setText(QR.currEntry.lowMissedAuton);
 
             }
 

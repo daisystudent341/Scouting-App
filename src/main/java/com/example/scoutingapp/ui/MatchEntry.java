@@ -5,6 +5,13 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 
 public class MatchEntry {
+    private final static CharSequence SEP = "¦";
+
+    public int matchNum = 0;
+    public String scoutName = "";
+    public int teamScouting = 0;
+    public char teamColor = 'B'; // B = blue, R = red
+
     public int highScoredAuton = 0;
     public int highMissedAuton = 0;
     public int lowScoredAuton = 0;
@@ -21,8 +28,16 @@ public class MatchEntry {
 
     private long climbStartMS = 0;
 
+
+    private final String[] climb = {"No", "Low", "Mid", "High", "Traversal"};
+
     public void startClimb() {
         climbStartMS = System.currentTimeMillis();
+    }
+
+    public String currClimbTimeDeltaFormatted() {
+        double tDelta = (double)(System.currentTimeMillis() - climbStartMS) / 1000.0f;
+        return formatTo2(tDelta);
     }
 
     public void endClimb() {
@@ -30,6 +45,11 @@ public class MatchEntry {
     }
 
     public void clear() {
+        matchNum = 0;
+        scoutName = "";
+        teamScouting = 0;
+        teamColor = 'B';
+
         highScoredAuton = 0;
         highMissedAuton = 0;
         lowScoredAuton = 0;
@@ -42,7 +62,7 @@ public class MatchEntry {
         lowScoredTeleop = 0;
         lowMissedTeleop = 0;
         climbTime = 0;
-        climbLevel = 0; // 0 (no climb) to 4 (traversal)
+        climbLevel = 0;
     }
 
     private int boolToBinary(boolean x) {
@@ -56,14 +76,19 @@ public class MatchEntry {
     }
 
 
+    private String getClimbLevel() {
+        return climb[climbLevel];
+    }
+
     @NonNull
     public String toString() {
 
-        return "" + highScoredAuton + "," + highMissedAuton + "," + lowScoredAuton + "," +
-                lowMissedAuton + "," + boolToBinary(taxi) + "," +
-                boolToBinary(interactsWithOtherTeamAuton) + "," + highScoredTeleop + "," +
-                highMissedTeleop + "," + lowScoredTeleop + "," + lowMissedTeleop + "," +
-                formatTo2(climbTime) + "," + climbLevel;
+        return "" + matchNum + SEP + scoutName + SEP + teamScouting + SEP + teamColor + SEP +
+                highScoredAuton + SEP + highMissedAuton + SEP + lowScoredAuton + SEP +
+                lowMissedAuton + SEP + boolToBinary(taxi) + SEP +
+                boolToBinary(interactsWithOtherTeamAuton) + SEP + highScoredTeleop + SEP +
+                highMissedTeleop + SEP + lowScoredTeleop + SEP + lowMissedTeleop + SEP +
+                formatTo2(climbTime) + SEP + getClimbLevel();
 
     }
 

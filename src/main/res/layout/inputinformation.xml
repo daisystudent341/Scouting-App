@@ -11,7 +11,7 @@
         android:ems="10"
         android:hint="Match Number"
         android:textSize="30dp"
-        android:inputType="textPersonName"
+        android:inputType="number"
         tools:layout_editor_absoluteX="484dp"
         tools:layout_editor_absoluteY="112dp" />
 
@@ -31,7 +31,7 @@
         android:layout_width="306dp"
         android:layout_height="130dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Team Scouting"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="484dp"
@@ -45,4 +45,23 @@
         android:textSize="30dp"
         tools:layout_editor_absoluteX="464dp"
         tools:layout_editor_absoluteY="607dp" />
+
+    <Button
+        android:id="@+id/button_Back"
+        android:layout_width="332dp"
+        android:layout_height="141dp"
+        android:text="Back"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="607dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton_teamColor"
+        android:layout_width="322dp"
+        android:layout_height="118dp"
+        android:textOn="Red Team"
+        android:textOff="Blue Team"
+        tools:layout_editor_absoluteX="820dp"
+        tools:layout_editor_absoluteY="463dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

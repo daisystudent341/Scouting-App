@@ -311,26 +311,26 @@
         android:id="@+id/textView_Timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0:00"
+        android:text="0.0"
         android:textSize="100dp"
-        tools:layout_editor_absoluteX="1008dp"
-        tools:layout_editor_absoluteY="501dp" />
+        tools:layout_editor_absoluteX="970dp"
+        tools:layout_editor_absoluteY="500dp" />
 
     <Button
         android:id="@+id/button_StopClimb"
         android:layout_width="174dp"
         android:layout_height="74dp"
         android:text="Stop Climb"
-        tools:layout_editor_absoluteX="786dp"
-        tools:layout_editor_absoluteY="599dp" />
+        tools:layout_editor_absoluteX="742dp"
+        tools:layout_editor_absoluteY="580dp" />
 
     <Button
         android:id="@+id/button_StartClimb"
         android:layout_width="174dp"
         android:layout_height="74dp"
         android:text="Start Climb"
-        tools:layout_editor_absoluteX="786dp"
-        tools:layout_editor_absoluteY="498dp" />
+        tools:layout_editor_absoluteX="742dp"
+        tools:layout_editor_absoluteY="488dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
