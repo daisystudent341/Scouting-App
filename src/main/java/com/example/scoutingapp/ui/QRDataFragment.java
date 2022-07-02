@@ -49,9 +49,6 @@ public class QRDataFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = QrdataBinding.inflate(inflater, container, false);
 
-        QR.addCurrEntry();
-
-        Log.d("HI", ""+QR.getNumQRCodes());
 
         if (QR.getNumQRCodes() > 0) currQR = 1;
         else currQR = 0;
