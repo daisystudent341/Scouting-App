@@ -56,9 +56,9 @@ class DataHandler:
     def __init__(self, pass_file_loc):
         self._pass = open(pass_file_loc, "r").read()
         self.alive = True
-        self.SEP = '§'
+        self.SEP = 'ｧ'
         self._stored_data = ['Match', 'Scout', 'Team', 'High Scored Auton', 'High Missed Auton', 'Low Scored Auton', 'Low Missed Auton', 'Taxi', 'Interacts with other team\'s cargo', 'High Scored Teleop', 'High Missed Teleop', 'Low Scored Teleop', 'Low Missed Teleop', 'Climb Time (sec)', 'Climb Level']
-        self.SUB_SEP = '¦'
+        self.SUB_SEP = 'ｦ'
         try:
             self._client = MongoClient(f"mongodb+srv://mod:{self._pass}@cluster0.7pmqtxc.mongodb.net/?retryWrites=true&w=majority", socketTimeoutMS=500, connectTimeoutMS=500, serverSelectionTimeoutMS=50)
             self._match_data = self._client.data.matches
