@@ -27,6 +27,10 @@ public class AutonomousFragment  extends Fragment {
 
         binding = AutonomousBinding.inflate(inflater, container, false);
 
+        binding.textUserInfo.setText("Name: " + QR.currEntry.scoutName + "\nScouting: " + QR.currEntry.teamScouting +
+                "\nMatch: " + QR.currEntry.matchNum);
+
+
         Button bQuit = binding.buttonQuit;
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +78,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredAuton++;
-                binding.textHighValue.setText(QR.currEntry.highScoredAuton);
+                binding.textHighValue.setText("" + QR.currEntry.highScoredAuton);
             }
 
         });
@@ -83,26 +87,29 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredAuton--;
-                binding.textHighValue.setText(QR.currEntry.highScoredAuton);
+                QR.currEntry.highScoredAuton = Math.max(0, QR.currEntry.highScoredAuton);
+                binding.textHighValue.setText("" + QR.currEntry.highScoredAuton);
 
             }
 
         });
-        Button bHighMissedPlus = binding.buttonHighPlus;
+        Button bHighMissedPlus = binding.buttonHighMissedPlus;
         bHighMissedPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highMissedAuton++;
-                binding.textHighMissedValue.setText(QR.currEntry.highMissedAuton);
+                binding.textHighMissedValue.setText("" + QR.currEntry.highMissedAuton);
             }
 
         });
-        Button bHighMissedMinus = binding.buttonHighMinus;
+        Button bHighMissedMinus = binding.buttonHighMissedMinus;
         bHighMissedMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highMissedAuton--;
-                binding.textHighMissedValue.setText(QR.currEntry.highMissedAuton);
+                QR.currEntry.highMissedAuton = Math.max(0, QR.currEntry.highMissedAuton);
+
+                binding.textHighMissedValue.setText("" + QR.currEntry.highMissedAuton);
 
             }
 
@@ -112,7 +119,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredAuton++;
-                binding.textLowValue.setText(QR.currEntry.lowScoredAuton);
+                binding.textLowValue.setText("" + "" + QR.currEntry.lowScoredAuton);
             }
 
         });
@@ -121,7 +128,9 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredAuton--;
-                binding.textLowValue.setText(QR.currEntry.lowScoredAuton);
+                QR.currEntry.lowScoredAuton = Math.max(0, QR.currEntry.lowScoredAuton);
+
+                binding.textLowValue.setText("" + "" + QR.currEntry.lowScoredAuton);
 
 
             }
@@ -132,7 +141,7 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedAuton++;
-                binding.textLowMissedValue.setText(QR.currEntry.lowMissedAuton);
+                binding.textLowMissedValue.setText("" + QR.currEntry.lowMissedAuton);
 
             }
 
@@ -142,11 +151,15 @@ public class AutonomousFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedAuton--;
-                binding.textLowMissedValue.setText(QR.currEntry.lowMissedAuton);
+                QR.currEntry.lowMissedAuton = Math.max(0, QR.currEntry.lowMissedAuton);
+
+                binding.textLowMissedValue.setText("" + QR.currEntry.lowMissedAuton);
 
             }
 
         });
+
+
 
         CheckBox cInteracts = binding.checkBoxOtherColor;
         cInteracts.setOnClickListener(new View.OnClickListener() {

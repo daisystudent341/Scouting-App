@@ -1,41 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/editText_TeamScouting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:hint="Team Scouting"
+        android:inputType="number"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/editText_ScoutName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684" />
+
+    <EditText
         android:id="@+id/editText_MatchNumber"
-        android:layout_width="312dp"
-        android:layout_height="123dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Match Number"
-        android:textSize="30dp"
         android:inputType="number"
-        tools:layout_editor_absoluteX="484dp"
-        tools:layout_editor_absoluteY="112dp" />
+        android:textSize="30dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_ScoutName"
+        app:layout_constraintVertical_bias="0.128" />
 
     <EditText
         android:id="@+id/editText_ScoutName"
-        android:layout_width="307dp"
-        android:layout_height="131dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:textSize="30dp"
         android:hint="Scout Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="484dp"
-        tools:layout_editor_absoluteY="251dp" />
-
-    <EditText
-        android:id="@+id/editText_TeamScouting"
-        android:layout_width="306dp"
-        android:layout_height="130dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Team Scouting"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="484dp"
-        tools:layout_editor_absoluteY="390dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
 
     <Button
         android:id="@+id/button_StartMatch"
@@ -43,8 +58,11 @@
         android:layout_height="141dp"
         android:text="Start Match"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="464dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toggleButton_teamColor"
+        app:layout_constraintStart_toEndOf="@id/toggleButton_teamColor"
+/>
 
     <Button
         android:id="@+id/button_Back"
@@ -52,16 +70,23 @@
         android:layout_height="141dp"
         android:text="Back"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toggleButton_teamColor"
+        app:layout_constraintEnd_toStartOf="@id/toggleButton_teamColor"
+/>
 
     <ToggleButton
         android:id="@+id/toggleButton_teamColor"
         android:layout_width="322dp"
         android:layout_height="118dp"
-        android:textOn="Red Team"
+        android:layout_marginTop="36dp"
         android:textOff="Blue Team"
-        tools:layout_editor_absoluteX="820dp"
-        tools:layout_editor_absoluteY="463dp" />
+        android:textOn="Red Team"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_MatchNumber"
+        app:layout_constraintVertical_bias="0.198" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,7 +61,7 @@ public class TeleopFragment  extends Fragment {
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QR.addCurrEntry();
+                QR.addCurrMatchEntry();
                 MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {

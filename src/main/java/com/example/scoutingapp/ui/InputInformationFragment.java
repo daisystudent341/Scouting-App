@@ -1,6 +1,7 @@
 package com.example.scoutingapp.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,9 @@ public class InputInformationFragment extends Fragment {
             public void onClick(View v) {
                 QR.currEntry.scoutName = scoutName = binding.editTextScoutName.getText().toString();
                 QR.currEntry.matchNum =
-                        Integer.getInteger(binding.editTextScoutName.getText().toString());
+                        Integer.parseInt(binding.editTextMatchNumber.getText().toString());
                 QR.currEntry.teamScouting =
-                        Integer.getInteger(binding.editTextTeamScouting.getText().toString());
+                        Integer.parseInt(binding.editTextTeamScouting.getText().toString());
                 teamColor = binding.toggleButtonTeamColor.isChecked();
                 QR.currEntry.teamColor = teamColor ? 'R' : 'B';
 

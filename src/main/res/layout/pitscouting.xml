@@ -220,6 +220,17 @@
 
                 android:text="What levels can you climb to?" />
             <CheckBox
+                android:id="@+id/checkBox_NoBarPit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:text="None"
+                android:layout_gravity="center"
+
+                tools:layout_editor_absoluteX="212dp"
+                tools:layout_editor_absoluteY="543dp" />
+            <CheckBox
                 android:id="@+id/checkBox_LowBarPit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

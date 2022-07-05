@@ -8,7 +8,7 @@ public class MatchEntry {
     private final static CharSequence SEP = "¦";
 
     public int matchNum = 0;
-    public String scoutName = "";
+    public String scoutName = "Name";
     public int teamScouting = 0;
     public char teamColor = 'B'; // B = blue, R = red
 
@@ -44,26 +44,6 @@ public class MatchEntry {
         climbTime = (double)(System.currentTimeMillis() - climbStartMS) / 1000.0f;
     }
 
-    public void clear() {
-        matchNum = 0;
-        scoutName = "";
-        teamScouting = 0;
-        teamColor = 'B';
-
-        highScoredAuton = 0;
-        highMissedAuton = 0;
-        lowScoredAuton = 0;
-        lowMissedAuton = 0;
-        taxi = false;
-        interactsWithOtherTeamAuton = false;
-
-        highScoredTeleop = 0;
-        highMissedTeleop = 0;
-        lowScoredTeleop = 0;
-        lowMissedTeleop = 0;
-        climbTime = 0;
-        climbLevel = 0;
-    }
 
     private int boolToBinary(boolean x) {
         return (x ? 1 : 0);

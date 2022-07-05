@@ -3,7 +3,6 @@ package com.example.scoutingapp.ui;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +48,9 @@ public class QRDataFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = QrdataBinding.inflate(inflater, container, false);
 
+
+        QR.addCurrMatchEntry();
+        QR.addCurrMatchEntry();
 
         if (QR.getNumQRCodes() > 0) currQR = 1;
         else currQR = 0;

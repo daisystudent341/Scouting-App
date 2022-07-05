@@ -8,34 +8,43 @@
 
     <Button
         android:id="@+id/button_Scout"
-        android:layout_width="1127dp"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
         android:text="Scout Matches"
         android:textSize="69dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="319dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
     <Button
         android:id="@+id/button_PitScout"
-        android:layout_width="1127dp"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
         android:text="Pit Scouting"
         android:textSize="69dp"
         app:layout_constraintBottom_toTopOf="@+id/button_Scout"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.701" />
 
     <Button
         android:id="@+id/button_Data"
-        android:layout_width="1127dp"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
         android:text="View Data"
         android:textSize="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Scout" />
+        app:layout_constraintTop_toBottomOf="@+id/button_Scout"
+        app:layout_constraintVertical_bias="0.299" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
