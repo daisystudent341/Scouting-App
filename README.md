@@ -29,4 +29,12 @@ Frontend and Backend for Team 341 Scouting App
    - Appearance
 
 # Tablets
-   App in progress...
+   ## Set-up ##
+   - Download the apk and you are set!
+   
+   ## Features ##
+   - Generates 1 QR Code for every 10 entries to minimize scans
+   - Handles pit scouting as well as match scouting
+
+# TO-DO
+Data visualization
