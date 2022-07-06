@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+
+
+        android:id="@+id/button_prevQR"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:text="Previous"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.159" />
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="500px"
-        android:layout_height="500px"
-        app:layout_constraintBottom_toTopOf="@+id/button_prevQR"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerView2"
+        android:layout_width="800px"
+        android:layout_height="800px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -20,61 +37,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:text=""
         android:textSize="55dp"
-        android:text="hey"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895" />
 
     <Button
         android:id="@+id/button_nextQR"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="113dp"
+        android:layout_height="90dp"
         android:text="Next"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.437"
-        tools:layout_editor_absoluteX="596dp" />
+        app:layout_constraintVertical_bias="0.164" />
 
-    <Button
-        android:id="@+id/button_prevQR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
-        android:text="Previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_nextQR"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="484dp"
+        android:layout_width="182dp"
+        android:layout_height="113dp"
         android:text="Back"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerView2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/button_prevQR"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintVertical_bias="0.0"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_prevQR"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="332dp"
-
-
-        android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

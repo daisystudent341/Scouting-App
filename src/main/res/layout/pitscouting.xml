@@ -14,6 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:divider="@drawable/divider"
+            android:showDividers="middle"
             >
 
             <EditText
@@ -37,7 +39,7 @@
                 android:layout_gravity="center"
 
                 android:hint="Team Number"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <TextView
                 android:layout_gravity="center"
@@ -54,7 +56,7 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:layout_gravity="center"
-
+                
                 android:text="Tank"
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
@@ -64,6 +66,8 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:scaleY="2"
+                
+
                 android:text="Swerve"
                 android:layout_gravity="center"
 
@@ -79,6 +83,8 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:text="Mecanum"
+                
+
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
 
@@ -87,6 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleX="2"
+                
+
                 android:scaleY="2"
                 android:text="Other"
                 android:layout_gravity="center"
@@ -96,6 +104,7 @@
             <TextView
                 android:gravity="center_horizontal"
                 android:textSize="35dp"
+                
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +124,7 @@
             <TextView
                 android:gravity="center_horizontal"
                 android:textSize="35dp"
+                
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,6 +138,7 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:layout_gravity="center"
+                
 
                 android:text="Falcon"
                 tools:layout_editor_absoluteX="212dp"
@@ -141,6 +152,8 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:text="NEO"
+                
+
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
 
@@ -152,6 +165,7 @@
                 android:scaleY="2"
 
                 android:layout_gravity="center"
+                
 
                 android:text="CIM"
                 tools:layout_editor_absoluteX="212dp"
@@ -166,6 +180,8 @@
 
                 android:scaleY="2"
                 android:text="Mini CIM"
+                
+
                 />
             <TextView
                 android:gravity="center_horizontal"
@@ -174,6 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                
 
                 android:text="How wide is robot when hanging? (inches)" />
             <EditText
@@ -187,13 +204,14 @@
                 android:layout_gravity="center"
 
                 android:hint="Robot width (inches)"
-                android:inputType="number" />
+                android:inputType="numberDecimal" />
 
             <CheckBox
                 android:id="@+id/checkBox_HighHubPit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                
 
                 android:scaleX="2"
                 android:scaleY="2"
@@ -205,6 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                
 
                 android:scaleX="2"
                 android:scaleY="2"
@@ -217,6 +236,7 @@
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
                 android:textSize="35dp"
+                
 
                 android:text="What levels can you climb to?" />
             <CheckBox
@@ -227,6 +247,7 @@
                 android:scaleY="2"
                 android:text="None"
                 android:layout_gravity="center"
+                
 
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
@@ -238,6 +259,7 @@
                 android:scaleY="2"
                 android:text="Low"
                 android:layout_gravity="center"
+                
 
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
@@ -259,6 +281,7 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:layout_gravity="center"
+                
 
                 android:scaleY="2"
                 android:text="High"
@@ -271,6 +294,7 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:scaleY="2"
+                
                 android:layout_gravity="center"
 
                 android:text="Traversal"
@@ -281,6 +305,7 @@
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
                 android:textSize="35dp"
+                
 
                 android:layout_height="wrap_content"
                 android:text="Do you have vision for scoring balls?" />
@@ -290,6 +315,7 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:layout_gravity="center"
+                
 
                 android:scaleY="2"
                 android:text="No vision"
@@ -301,11 +327,14 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:layout_gravity="center"
+                
 
                 android:scaleY="2"
                 android:text="Limelight"
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
+
+
 
             <CheckBox
                 android:id="@+id/checkBox_Camera"
@@ -314,6 +343,7 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:layout_gravity="center"
+                
 
                 android:text="Camera"
                 tools:layout_editor_absoluteX="212dp"
@@ -325,12 +355,30 @@
                 android:layout_height="wrap_content"
                 android:scaleX="2"
                 android:layout_gravity="center"
+                
 
                 android:scaleY="2"
                 android:text="Custom"
                 tools:layout_editor_absoluteX="212dp"
                 tools:layout_editor_absoluteY="543dp" />
 
+            <Button
+                
+
+                android:id="@+id/button_submitPit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textSize="50dp"/>
+
+            <Button
+
+
+                android:id="@+id/button_BackPit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textSize="50dp"/>
 
 
 

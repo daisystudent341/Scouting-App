@@ -36,6 +36,12 @@ public class TeleopFragment  extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = TeleopBinding.inflate(inflater, container, false);
+
+        binding.textUserInfoT.setText(""+"Name: " + QR.currEntry.scoutName + "\nScouting: " +
+                QR.currEntry.teamScouting + "\nColor: " +
+                (QR.currEntry.teamColor == 'R' ? "Red" : "Blue") +
+                "\nMatch: " + QR.currEntry.matchNum);
+
         Button bQuit = binding.buttonQuitT;
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +84,7 @@ public class TeleopFragment  extends Fragment {
             }
 
         });
-        Button bBack = binding.buttonAutonomous;
+        Button bBack = binding.buttonAutonomousT;
         bBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +110,7 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredTeleop++;
-                binding.textHighValueT.setText(QR.currEntry.highScoredTeleop);
+                binding.textHighValueT.setText(""+QR.currEntry.highScoredTeleop);
 
             }
 
@@ -114,7 +120,9 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highScoredTeleop--;
-                binding.textHighValueT.setText(QR.currEntry.highScoredTeleop);
+                QR.currEntry.highScoredTeleop = Math.max(0, QR.currEntry.highScoredTeleop);
+
+                binding.textHighValueT.setText(""+QR.currEntry.highScoredTeleop);
 
             }
 
@@ -124,16 +132,18 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highMissedTeleop++;
-                binding.textHighMissedValueT.setText(QR.currEntry.highMissedTeleop);
+                binding.textHighMissedValueT.setText(""+QR.currEntry.highMissedTeleop);
             }
 
         });
-        Button bHighMissedMinus = binding.buttonHighMinusT;
+        Button bHighMissedMinus = binding.buttonHighMissedMinusT;
         bHighMissedMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 QR.currEntry.highMissedTeleop--;
-                binding.textHighMissedValueT.setText(QR.currEntry.highMissedTeleop);
+                QR.currEntry.highMissedTeleop = Math.max(0, QR.currEntry.highMissedTeleop);
+
+                binding.textHighMissedValueT.setText(""+QR.currEntry.highMissedTeleop);
 
             }
 
@@ -143,7 +153,7 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredTeleop++;
-                binding.textLowValueT.setText(QR.currEntry.lowScoredTeleop);
+                binding.textLowValueT.setText(""+QR.currEntry.lowScoredTeleop);
 
             }
 
@@ -153,7 +163,9 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowScoredTeleop--;
-                binding.textLowValueT.setText(QR.currEntry.lowScoredTeleop);
+                QR.currEntry.lowScoredTeleop = Math.max(0, QR.currEntry.lowScoredTeleop);
+
+                binding.textLowValueT.setText(""+QR.currEntry.lowScoredTeleop);
 
             }
 
@@ -163,7 +175,7 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedTeleop++;
-                binding.textLowMissedValueT.setText(QR.currEntry.lowMissedTeleop);
+                binding.textLowMissedValueT.setText(""+QR.currEntry.lowMissedTeleop);
 
             }
 
@@ -173,7 +185,9 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 QR.currEntry.lowMissedTeleop--;
-                binding.textLowMissedValueT.setText(QR.currEntry.lowMissedTeleop);
+                QR.currEntry.lowMissedTeleop = Math.max(0, QR.currEntry.lowMissedTeleop);
+
+                binding.textLowMissedValueT.setText(""+QR.currEntry.lowMissedTeleop);
 
             }
 
@@ -184,36 +198,35 @@ public class TeleopFragment  extends Fragment {
             @Override
             public void onClick(View v) {
 
-                QR.currEntry.startClimb();
-                climbing = true;
-                handler.post(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        if (climbing) {
 
-                            binding.textViewTimer.setText(QR.currEntry.currClimbTimeDeltaFormatted());
-                            Log.d("DATA", QR.currEntry.currClimbTimeDeltaFormatted());
+                if (!climbing) {
+
+                    QR.currEntry.startClimb();
+                    climbing = true;
+                    binding.buttonStartClimb.setText("Stop Climb");
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            if (climbing) {
+
+                                binding.textViewTimer.setText("" + QR.currEntry.currClimbTimeDeltaFormatted());
+                            }
+                            handler.postDelayed(this, 1);
                         }
-                        handler.postDelayed(this, 1);
-                    }
-                });
+                    });
+                }
+                else {
+                    QR.currEntry.endClimb();
+                    climbing = false;
+                    binding.buttonStartClimb.setText("Start Climb");
 
+                }
             }
 
         });
 
-        Button bStopTimer = binding.buttonStopClimb;
-        bStopTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                QR.currEntry.endClimb();
-                climbing = false;
-
-            }
-
-        });
 
 
         cNoClimb = binding.checkBoxNoClimb;

@@ -1,5 +1,6 @@
 package com.example.scoutingapp.ui;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +21,23 @@ import com.example.scoutingapp.databinding.AutonomousBinding;
 
 public class AutonomousFragment  extends Fragment {
     private AutonomousBinding binding;
-
+    private CheckBox cInteracts;
+    private CheckBox cTaxi;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
         binding = AutonomousBinding.inflate(inflater, container, false);
 
-        binding.textUserInfo.setText("Name: " + QR.currEntry.scoutName + "\nScouting: " + QR.currEntry.teamScouting +
+        binding.textUserInfo.setText("Name: " + QR.currEntry.scoutName + "\nScouting: " +
+                QR.currEntry.teamScouting + "\nColor: " +
+                (QR.currEntry.teamColor == 'R' ? "Red" : "Blue") +
                 "\nMatch: " + QR.currEntry.matchNum);
 
 
         Button bQuit = binding.buttonQuit;
+        cTaxi = binding.checkBoxTaxi;
+        cInteracts = binding.checkBoxOtherColor;
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,20 +167,21 @@ public class AutonomousFragment  extends Fragment {
 
 
 
-        CheckBox cInteracts = binding.checkBoxOtherColor;
         cInteracts.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.d("YOOOO", cInteracts.isChecked() ?"YE":"NA");
                     QR.currEntry.interactsWithOtherTeamAuton = cInteracts.isChecked();
 
                 }
 
 
         });
-        CheckBox cTaxi = binding.checkBoxTaxi;
-        cInteracts.setOnClickListener(new View.OnClickListener() {
+        cTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("YOOOO", cTaxi.isChecked() ?"YE":"NA");
+
                 QR.currEntry.taxi = cTaxi.isChecked();
 
             }

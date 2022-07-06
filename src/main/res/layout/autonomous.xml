@@ -238,14 +238,12 @@
         android:textStyle="italic" />
 
 
-
-
     <Button
         android:id="@+id/button_quit"
         android:layout_width="182dp"
         android:layout_height="113dp"
-        android:layout_row="7"
-        android:layout_column="0"
+        android:layout_row="6"
+        android:layout_column="1"
         android:text="Quit"
         android:textSize="35dp" />
 
@@ -253,12 +251,11 @@
         android:id="@+id/button_Submit"
         android:layout_width="182dp"
         android:layout_height="113dp"
-        android:layout_row="7"
+        android:layout_row="6"
         android:layout_column="4"
-        android:text="Auton"
-        android:textSize="35dp"
         android:layout_gravity="end"
-        />
+        android:text="Teleop"
+        android:textSize="35dp" />
 
 
 </GridLayout>

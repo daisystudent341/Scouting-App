@@ -32,8 +32,7 @@ public class HomeFragment  extends Fragment {
                 MainActivity.navController.navigate(new NavDirections() {
                     @Override
                     public int getActionId() {
-                        /* TODO: view data page */
-                        return -1;
+                        return R.id.action_navigation_home_to_qrdata;
                     }
 
                     @NonNull

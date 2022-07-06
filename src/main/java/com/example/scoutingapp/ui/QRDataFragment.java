@@ -49,8 +49,6 @@ public class QRDataFragment extends Fragment {
         binding = QrdataBinding.inflate(inflater, container, false);
 
 
-        QR.addCurrMatchEntry();
-        QR.addCurrMatchEntry();
 
         if (QR.getNumQRCodes() > 0) currQR = 1;
         else currQR = 0;

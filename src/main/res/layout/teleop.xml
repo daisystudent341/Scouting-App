@@ -1,261 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
 
-    <Button
-        android:id="@+id/button_HighMissedMinusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="672dp"
-        android:layout_marginTop="80dp"
-        android:text="-"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:columnCount="6"
+    android:rowCount="9">
 
-    <TextView
-        android:id="@+id/text_HighMissedValueT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="90dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_HighMissedPlusT"
-        app:layout_constraintHorizontal_bias="0.585"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMissedMinusT"
-        tools:layout_editor_absoluteY="84dp" />
-
-    <Button
-        android:id="@+id/button_HighMissedPlusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="1008dp"
-        android:layout_marginTop="76dp"
-        android:text="+"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_LowMissedPlusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="1012dp"
-        android:layout_marginTop="332dp"
-        android:text="+"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_Low_MissedT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="628dp"
-        android:text="Low Missed"
-        android:textSize="50dp"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="265dp" />
-
-    <TextView
-        android:id="@+id/text_Low_Missed_ValueT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="728dp"
-        android:text="0"
-        android:textSize="90dp"
-        app:layout_constraintHorizontal_bias="0.585"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="340dp" />
-
-    <Button
-        android:id="@+id/button_LowMissedMinusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="676dp"
-        android:layout_marginTop="336dp"
-        android:text="-"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_High_MissedT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="624dp"
-        android:text="High Missed"
-        android:textSize="50dp"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="9dp" />
-
-    <Button
-        android:id="@+id/button_HighPlusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="344dp"
-        android:layout_marginTop="68dp"
-        android:text="+"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_LowPlusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="344dp"
-        android:layout_marginTop="320dp"
-        android:text="+"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_LowValueT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="90dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_LowPlusT"
-        app:layout_constraintHorizontal_bias="0.569"
-        app:layout_constraintStart_toEndOf="@+id/button_lowMinusT"
-        tools:layout_editor_absoluteY="320dp" />
-
-    <TextView
-        android:id="@+id/text_lowGoalT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Low Goal"
-        android:textSize="50dp"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="253dp" />
-
-    <Button
-        android:id="@+id/button_lowMinusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="320dp"
-        android:text="-"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_HighMinusT"
-        android:layout_width="154dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
-        android:text="-"
-        android:textSize="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_HighGoalT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="1"
         android:text="High Goal"
-        android:textSize="50dp"
+        android:textSize="35dp"
+        android:layout_gravity="center_horizontal"
 
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="0dp" />
+        />
+
+
+    <Button
+        android:id="@+id/button_AutonomousT"
+        android:layout_width="wrap_content"
+        android:layout_height="113dp"
+        android:layout_marginStart="30dp"
+        android:layout_row="7"
+        android:layout_column="1"
+        android:layout_gravity="top"
+        android:text="Back"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/button_HighPlusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="end"
+        android:text="+"
+        android:textSize="90dp" />
 
     <TextView
         android:id="@+id/text_HighValueT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_gravity="center"
         android:text="0"
-        android:textSize="90dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_HighPlusT"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/button_HighMinusT"
-        tools:layout_editor_absoluteY="76dp" />
+        android:textSize="90dp" />
+
+    <Button
+        android:id="@+id/button_HighMinusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="2"
+
+
+        android:text="-"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/text_lowGoalT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="4"
+        android:text="Low Goal"
+        android:layout_gravity="center_horizontal"
+
+        android:textSize="35dp" />
+
+    <Button
+        android:id="@+id/button_LowPlusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="3"
+        android:layout_gravity="end"
+        android:text="+"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/text_LowValueT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="4"
+        android:text="0"
+        android:layout_gravity="center"
+
+        android:textSize="90dp" />
+
+
+    <Button
+        android:id="@+id/button_lowMinusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="5"
+
+        android:text="-"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/text_High_MissedT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:text="High Missed"
+        android:textSize="35dp" />
+
+    <Button
+        android:id="@+id/button_HighMissedMinusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:text="-"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/text_HighMissedValueT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:layout_gravity="center"
+        android:text="0"
+        android:textSize="90dp" />
+
+    <Button
+        android:id="@+id/button_HighMissedPlusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="end"
+        android:text="+"
+        android:textSize="90dp" />
+
+    <Button
+        android:id="@+id/button_LowMissedPlusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="3"
+        android:layout_gravity="end"
+        android:text="+"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/text_Low_MissedT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="4"
+        android:text="Low Missed"
+        android:layout_gravity="center"
+
+        android:textSize="35dp" />
+
+    <TextView
+        android:id="@+id/text_Low_Missed_ValueT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="4"
+        android:layout_gravity="center"
+
+        android:text="0"
+        android:textSize="90dp" />
+
+    <Button
+        android:id="@+id/button_LowMissedMinusT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="5"
+        android:text="-"
+        android:textSize="90dp" />
+
+
 
     <TextView
         android:id="@+id/text_Teleop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teleop"
-        android:textSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="696dp" />
+        android:layout_row="5"
+        android:layout_column="0"
+        android:paddingStart="50dp"
+        android:text="TELEOP"
+
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text_ScoutNameT"
+        android:id="@+id/text_userInfoT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scout Name"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.368"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="703dp" />
+        android:layout_row="6"
+        android:layout_column="0"
+        android:paddingStart="50dp"
+        android:layout_gravity="top"
+        android:text="Info"
+        android:textSize="35dp"
+        android:textStyle="italic" />
 
-    <TextView
-        android:id="@+id/text_MatchNumberT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Match Number"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="663dp" />
-
-    <TextView
-        android:id="@+id/text_TeamScoutingT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team Scouting"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.364"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="745dp" />
-
-
-    <Button
-        android:id="@+id/button_Autonomous"
-        android:layout_width="234dp"
-        android:layout_height="111dp"
-        android:text="Autonomous"
-        android:textSize="25dp"
-        tools:layout_editor_absoluteX="980dp"
-        tools:layout_editor_absoluteY="664dp" />
 
     <Button
         android:id="@+id/button_quitT"
-        android:layout_width="169dp"
-        android:layout_height="119dp"
+        android:layout_width="182dp"
+        android:layout_height="113dp"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:layout_gravity="top"
         android:text="Quit"
-        android:textSize="50dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="656dp" />
+        android:textSize="35dp" />
 
     <Button
-        android:id="@+id/button_submitT"
-        android:layout_width="179dp"
-        android:layout_height="121dp"
+        android:id="@+id/button_SubmitT"
+        android:layout_width="182dp"
+        android:layout_height="113dp"
+        android:layout_row="7"
+        android:layout_column="5"
+        android:layout_gravity="center"
+
         android:text="Submit"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="199dp"
-        tools:layout_editor_absoluteY="654dp" />
+        android:textSize="35dp" />
 
-    <RadioGroup
+    <CheckBox
+        android:id="@+id/checkBox_Mid"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="3"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Mid"
+        android:layout_gravity="center"
 
-    </RadioGroup>
+        />
+
+    <CheckBox
+        android:id="@+id/checkBox_NoClimb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="No Climb"
+        android:layout_gravity="center"/>
+
+    <CheckBox
+        android:id="@+id/checkBox_Traversal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="5"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Traversal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="40dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox_HighBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="4"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="High"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/textView_Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="6"
+        android:layout_column="3"
+        android:text="6.20"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="100dp"
+        tools:layout_editor_absoluteX="970dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+    <TextView
+        android:id="@+id/textView_ClimbConst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:text="Climb Level"
+        android:textSize="35dp"
+        tools:layout_editor_absoluteX="970dp"
+        tools:layout_editor_absoluteY="500dp" />
 
     <CheckBox
         android:id="@+id/checkBox_Low"
@@ -264,73 +312,25 @@
         android:scaleX="2"
         android:scaleY="2"
         android:text="Low"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="543dp" />
+        android:layout_row="4"
+        android:layout_column="2"
+        android:layout_gravity="center"
 
-    <CheckBox
-        android:id="@+id/checkBox_Mid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="Mid"
-        tools:layout_editor_absoluteX="337dp"
-        tools:layout_editor_absoluteY="543dp" />
+        />
 
-    <CheckBox
-        android:id="@+id/checkBox_Traversal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="Traversal"
-        tools:layout_editor_absoluteX="575dp"
-        tools:layout_editor_absoluteY="543dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox_HighBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="High"
-        tools:layout_editor_absoluteX="446dp"
-        tools:layout_editor_absoluteY="543dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox_NoClimb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:text="No Climb"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="543dp" />
-
-    <TextView
-        android:id="@+id/textView_Timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0.0"
-        android:textSize="100dp"
-        tools:layout_editor_absoluteX="970dp"
-        tools:layout_editor_absoluteY="500dp" />
-
-    <Button
-        android:id="@+id/button_StopClimb"
-        android:layout_width="174dp"
-        android:layout_height="74dp"
-        android:text="Stop Climb"
-        tools:layout_editor_absoluteX="742dp"
-        tools:layout_editor_absoluteY="580dp" />
 
     <Button
         android:id="@+id/button_StartClimb"
         android:layout_width="174dp"
         android:layout_height="74dp"
+        android:layout_row="6"
+        android:layout_column="2"
+        android:layout_gravity="center"
+
         android:text="Start Climb"
         tools:layout_editor_absoluteX="742dp"
         tools:layout_editor_absoluteY="488dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</GridLayout>

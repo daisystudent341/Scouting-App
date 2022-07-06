@@ -21,6 +21,11 @@
             app:destination="@id/navigation_inputinformation"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_home_to_qrdata"
+            app:destination="@id/navigation_qrdata"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_pitscouting"
@@ -28,8 +33,13 @@
         android:label="Pit Scouting"
         tools:layout="@layout/pitscouting">
         <action
-            android:id="@+id/action_navigation_pitscouting_to_inputinformation"
-            app:destination="@id/navigation_inputinformation"
+            android:id="@+id/action_navigation_refresh_pit"
+            app:destination="@id/navigation_pitscouting"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_navigation_pitscouting_to_home"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true"/>
     </fragment>

@@ -27,7 +27,7 @@ public class QR {
     private final static MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
     private final static CharSequence SEPARATOR = "§";
 
-    private static final int MAX_ENTRIES = 20;
+    private static final int MAX_ENTRIES = 10;
 
 
     private static String formatEntries(int startIdx, int endIdx) {

@@ -4,6 +4,13 @@ import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 public class PitScoutingEntry {
     String name;
     int teamNum;
@@ -15,7 +22,7 @@ public class PitScoutingEntry {
     double width;
     boolean highHub;
     boolean lowHub;
-    int climbLevelIdx;
+    SortedSet<Integer> climbLevelIdx = new TreeSet<>();
     private final String[] climbLevels = {"No", "Low", "Mid", "High", "Traversal"};
     int visionIdx;
     private final String[] visionTypes = {"No", "Limelight", "Camera", "Custom"};
@@ -32,11 +39,19 @@ public class PitScoutingEntry {
         return String.format("%.2f",d);
     }
 
+
+    private String getClimbLevels() {
+        String res = "";
+        for (int idx : climbLevelIdx) {
+            res += climbLevels[idx] + ",";
+        }
+        return res.substring(0, res.length() - 1);
+    }
     @NonNull
     public String toString() {
         return "" + name + SEP + teamNum + SEP + drivetrains[drivetrainIdx] + SEP + motorNum + SEP +
                 motorTypes[motorTypeIdx] + SEP + formatTo2(width) + SEP + boolToBinary(highHub) +
-                SEP + boolToBinary(lowHub) + SEP + climbLevels[climbLevelIdx] + SEP +
+                SEP + boolToBinary(lowHub) + SEP + getClimbLevels() + SEP +
                 visionTypes[visionIdx];
 
     }
