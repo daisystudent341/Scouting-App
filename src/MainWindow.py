@@ -14,14 +14,25 @@ dataHandler = DataHandler("./src/pass.txt")
 q = queue.Queue()
 
 try:
-    with open('./bin/offline_buffer.pkl', 'rb') as f:
+    with open('./bin/match_buffer.pkl', 'rb') as f:
         loaded_set = pickle.load(f)
 except FileNotFoundError:
-    with open('./bin/offline_buffer.pkl', 'wb') as f:
+    with open('./bin/match_buffer.pkl', 'wb') as f:
         pickle.dump(set(), f)
 
-with open('./bin/offline_buffer.pkl', 'rb') as f:
+with open('./bin/match_buffer.pkl', 'rb') as f:
     loaded_set = pickle.load(f)
+
+
+try:
+    with open('./bin/pit_buffer.pkl', 'rb') as f:
+        loaded_pit_set = pickle.load(f)
+except FileNotFoundError:
+    with open('./bin/pit_buffer.pkl', 'wb') as f:
+        pickle.dump(set(), f)
+
+with open('./bin/pit_buffer.pkl', 'rb') as f:
+    loaded_pit_set = pickle.load(f)
 
 
 class TextObject:
@@ -37,6 +48,7 @@ class MainWindow(QWidget):
         super(MainWindow, self).__init__()
         
         self._font = QFont('Times', 12)
+        self.viewing = "M"
 
         self.VBL = QGridLayout()
         self.setLayout(self.VBL)
@@ -64,7 +76,10 @@ class MainWindow(QWidget):
         self.TableLayout.addWidget(self.CachedLabel)
         self.VBL.addLayout(self.TableLayout,0,3)
         
-
+        self.changeViewBTN = QPushButton("Toggle Match/Pit View")
+        self.changeViewBTN.setFont(self._font)
+        self.changeViewBTN.clicked.connect(self._toggleView)
+        self.VBL.addWidget(self.changeViewBTN,1,3)
 
         self.NetworkStatus = QLabel()
         self.NetworkStatus.setFont(self._font)
@@ -87,7 +102,7 @@ class MainWindow(QWidget):
         self.saveDataBTN = QPushButton("Cache Data Locally")
         self.saveDataBTN.setFont(self._font)
         self.saveDataBTN.clicked.connect(self._saveData)
-        self.VBL.addWidget(self.saveDataBTN,1,3)
+        self.VBL.addWidget(self.saveDataBTN,2,3)
 
         self.syncBTN = QPushButton("Sync Offline Data to Server")
         self.syncBTN.setFont(self._font)
@@ -105,7 +120,6 @@ class MainWindow(QWidget):
 
         self.networkT.start()
         self.networkT.NetworkStatusUpdate.connect(self.NetworkStatusUpdateSlot)
-
 
         self.dataT = DataThread()
         
@@ -141,8 +155,10 @@ class MainWindow(QWidget):
 
     def closeEvent(self, event:QCloseEvent):
         self.mainT.ThreadActive = False
-        with open('./bin/offline_buffer.pkl', 'wb') as f:
+        with open('./bin/match_buffer.pkl', 'wb') as f:
             pickle.dump(loaded_set, f)
+        with open('./bin/pit_buffer.pkl', 'wb') as f:
+            pickle.dump(loaded_pit_set, f)
         sys.exit(0)
     
     def _syncData(self):
@@ -150,24 +166,41 @@ class MainWindow(QWidget):
             q.put(el)
     
     def _saveData(self):
-        with open('./bin/offline_buffer.pkl', 'wb') as f:
+        with open('./bin/match_buffer.pkl', 'wb') as f:
             pickle.dump(loaded_set, f)
-        
+        with open('./bin/pit_buffer.pkl', 'wb') as f:
+            pickle.dump(loaded_pit_set, f)
         self.StatusLabel.setStyleSheet("QLabel { color : green; }")
         self.StatusLabel.setText("Cached data locally! This also happens every app shutdown.\nNo need to press this to Sync Offline Data to Server either.")
         
     def _updateCacheTable(self):
-        self.CachedLabel.setRowCount(len(loaded_set))
+        self.CachedLabel.clear()
+        cur_set = None
+        data = None
+        if "M" == self.viewing:
+            cur_set = loaded_set
+            data = dataHandler._stored_data
+        else:
+            cur_set = loaded_pit_set
+            data = dataHandler._pit_data
 
-        self.CachedLabel.setHorizontalHeaderLabels(dataHandler._stored_data)
         
-        lst = dataHandler.unpack_raw_data_from_set(loaded_set, sort_data=True)
+        self.CachedLabel.setRowCount(len(cur_set))
+        self.CachedLabel.setColumnCount(len(data))
+        self.CachedLabel.setHorizontalHeaderLabels(data)
+        
+        lst = dataHandler.unpack_raw_data_from_set(cur_set, sort_data=True)
         
         for i, entry in enumerate(lst):
             self.CachedLabel.setColumnWidth(i, self.COLUMN_WIDTH)
             for j, val in enumerate(entry):
                 self.CachedLabel.setItem(i, j, QTableWidgetItem(str(val)))
-         
+    
+    def _toggleView(self):
+        if self.viewing == "M": self.viewing = "P"
+        else: self.viewing = "M"
+
+        self._updateCacheTable()
 
 class MainThread(QThread):
     ImageUpdate = pyqtSignal(QImage)
@@ -210,18 +243,22 @@ class DataThread(QThread):
         while self.ThreadActive:
             item = q.get()
             if item is not None:
-                ret, data = dataHandler.add_entry(item)
+                typ, ret, data = dataHandler.add_entry(item)
                 response = str()
-                formatting = "QLabel { color : red; }"
+                formatting = "QLabel { color : blue; }"
                 if ret == -1:
-                    response = "Error: Could not upload data to server. Saving locally if not already...\n" + dataHandler.format_data_from_dict_datapoint(data)
-                    loaded_set.add(str(item))
+                    response = "Could not upload data to server. Saving locally if not already...\n\n" + dataHandler.format_data_from_dict_datapoint(data)
                 elif ret == -2:
                     response = "Error: Invalid QR code"
                 else:
                     formatting = "QLabel { color : green; }"
-                    response = "Uploaded data online! Saving locally if not already...\n" + dataHandler.format_data_from_dict_datapoint(data)
+                    response = "Uploaded data online! Saving locally if not already...\n\n" + dataHandler.format_data_from_dict_datapoint(data)
+                
+                if typ=="M":
                     loaded_set.add(str(item))
+                elif typ=="P":
+                    loaded_pit_set.add(str(item))
+
                 textObj = TextObject()
                 textObj.txt = response
                 textObj.formatting = formatting

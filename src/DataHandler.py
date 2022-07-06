@@ -2,26 +2,44 @@ from calendar import day_abbr
 from pymongo import MongoClient
 
 class DataHandler:
-         
 
-    def _unpackData(self, data):
-        
-        data = str(data)
-        data = data.split(self.SUB_SEP)
-        if len(data) is not len(self._stored_data):
-            return None
-        
+
+    def _unpackMatchData(self, data):
         ret = dict()
-        
         for i, val in enumerate(self._stored_data):
             datapoint = data[i]
            
             temp = {val : datapoint}
 
             ret.update(temp)
-
-      
         return ret
+
+
+
+    def _unpackPitData(self, data):
+        ret = dict()
+        for i, val in enumerate(self._pit_data):
+            datapoint = data[i]
+           
+            temp = {val : datapoint}
+
+            ret.update(temp)
+        return ret
+         
+
+    def _unpackData(self, data):
+        
+        data = str(data)
+        data = data.split(self.SUB_SEP)
+
+        if len(data) == len(self._stored_data):
+            return "M", self._unpackMatchData(data)
+        elif len(data) == len(self._pit_data):
+            return "P", self._unpackPitData(data)
+        else:
+            return "",None
+       
+      
 
     def unpack_raw_str(self, data : str):
         data = str(data)
@@ -51,13 +69,24 @@ class DataHandler:
         for dataType, val in data.items():
             text += dataType + ": " + str(val) + ",  "
         text = text[:-3]
-        return text
+        res = ""
+        idx = 0
+        for ch in text:
+            idx += 1
+            res += ch
+            if idx == self.MAX_FORMAT_LEN:
+                idx = 0
+                res += '\n'
+        return res
 
     def __init__(self, pass_file_loc):
         self._pass = open(pass_file_loc, "r").read()
         self.alive = True
         self.SEP = 'ｧ'
-        self._stored_data = ['Match', 'Scout', 'Team', 'High Scored Auton', 'High Missed Auton', 'Low Scored Auton', 'Low Missed Auton', 'Taxi', 'Interacts with other team\'s cargo', 'High Scored Teleop', 'High Missed Teleop', 'Low Scored Teleop', 'Low Missed Teleop', 'Climb Time (sec)', 'Climb Level']
+        self.MAX_FORMAT_LEN = 45
+        self._stored_data = ['Match', 'Scout', 'Team', 'Team Color', 'High Scored Auton', 'High Missed Auton', 'Low Scored Auton', 'Low Missed Auton', 'Taxi', 'Interacts with other team\'s cargo', 'High Scored Teleop', 'High Missed Teleop', 'Low Scored Teleop', 'Low Missed Teleop', 'Climb Time (sec)', 'Climb Level']
+        self._pit_data = ['Name', 'Team', 'Drivetrain', 'Motor Count', 'Motor Type', 'Width While Hanging', 'Can score high hub', 'Can score low hub', 'Climb Levels', 'Vision Type']
+
         self.SUB_SEP = 'ｦ'
         try:
             self._client = MongoClient(f"mongodb+srv://mod:{self._pass}@cluster0.7pmqtxc.mongodb.net/?retryWrites=true&w=majority", socketTimeoutMS=500, connectTimeoutMS=500, serverSelectionTimeoutMS=50)
@@ -69,24 +98,24 @@ class DataHandler:
             self.initialized = False
 
     def add_entry(self, data):
-        data = self._unpackData(data)
+        typ, data = self._unpackData(data)
         print(data)
         if data and self.alive:
             try:
                 self._match_data.replace_one(data, data, upsert=True)
                 
-                return 0, data
+                return typ,0, data
 
             except Exception as e:
                 self.alive = False
                 # could not send data
-                return -1, data
+                return typ,-1, data
         elif data:
             self.alive = False
-            return -1, data
+            return typ,-1, data
         else:
             # invalid qr code
-            return -2, None
+            return "",-2, None
 
     def get_entry_from_match(self, match_num : str):
         return self._match_data.find_one({'match': match_num})

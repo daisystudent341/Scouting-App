@@ -1,5 +1,6 @@
+import imp
 import cv2
-
+from pyzbar.pyzbar import decode
 
 class CameraQR:
 
@@ -8,7 +9,7 @@ class CameraQR:
         capture.release()
 
     def updateCameraCount(self):
-        n = 0
+        n = 0   
         for i in range(10):
             try:
                 cap = cv2.VideoCapture(i)
@@ -23,7 +24,8 @@ class CameraQR:
 
 
     def chooseCamera(self, cam_num):
-        self._cap = cv2.VideoCapture(cam_num, cv2.CAP_DSHOW)
+         self._cap = cv2.VideoCapture(cam_num, cv2.CAP_DSHOW)
+       
 
     def _incrementCamera(self):
         self._cam_chosen += 1
@@ -36,9 +38,9 @@ class CameraQR:
     def __init__(self):
         self._num_cameras = 0
         self.updateCameraCount()
+        print(self._num_cameras)
         self._cam_chosen = 0
         self._cap = cv2.VideoCapture(self._cam_chosen, cv2.CAP_DSHOW)
-        self._detector = cv2.QRCodeDetector()
       
         self._data = None
         self._cur_img = None
@@ -49,10 +51,14 @@ class CameraQR:
 
     def _decodeImg(self, img):
          try:
-            data, _, _ = self._detector.detectAndDecode(img)
-            return data
+            for i in decode(img):
+                print(i.data.decode('utf-8'))
+                return str(i.data.decode('utf-8'))
+
          except Exception as e:
             return None
+
+         return None
 
          
 
@@ -77,6 +83,7 @@ class CameraQR:
             self._data = data
         else:
             self._data = None
+        
 
     def __del__(self):
         self.clearCapture(self._cap)
