@@ -8,7 +8,8 @@ Frontend and Backend for Team 341 Scouting App
    - Run the ```lets-encrypt-r3.cer``` file
    - Install python 3.9 (if not already installed)
    - Install pip for python 3.9 (if not already installed)
-   - Run the following commands (found in dependencies.txt):
+   - Pip install the dependencies found in dependencies.txt:
+     Examples:
      - ```pip install opencv-python```
      - ```pip install PyQt5```
      - ```pip install pyzbar```
