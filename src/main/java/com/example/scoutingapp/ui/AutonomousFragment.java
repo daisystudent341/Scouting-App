@@ -29,6 +29,8 @@ public class AutonomousFragment  extends Fragment {
 
         binding = AutonomousBinding.inflate(inflater, container, false);
 
+
+
         binding.textUserInfo.setText("Name: " + QR.currEntry.scoutName + "\nScouting: " +
                 QR.currEntry.teamScouting + "\nColor: " +
                 (QR.currEntry.teamColor == 'R' ? "Red" : "Blue") +
@@ -38,6 +40,15 @@ public class AutonomousFragment  extends Fragment {
         Button bQuit = binding.buttonQuit;
         cTaxi = binding.checkBoxTaxi;
         cInteracts = binding.checkBoxOtherColor;
+
+        binding.textHighValue.setText("" + QR.currEntry.highScoredAuton);
+        binding.textHighMissedValue.setText("" + QR.currEntry.highMissedAuton);
+        binding.textLowValue.setText("" + "" + QR.currEntry.lowScoredAuton);
+        binding.textLowMissedValue.setText("" + QR.currEntry.lowMissedAuton);
+
+        cInteracts.setChecked(QR.currEntry.interactsWithOtherTeamAuton);
+        cTaxi.setChecked(QR.currEntry.taxi);
+
         bQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

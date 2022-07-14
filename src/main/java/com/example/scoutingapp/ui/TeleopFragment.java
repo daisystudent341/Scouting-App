@@ -32,10 +32,19 @@ public class TeleopFragment  extends Fragment {
 
 
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
         binding = TeleopBinding.inflate(inflater, container, false);
+
+        binding.textHighMissedValueT.setText(""+QR.currEntry.highMissedTeleop);
+        binding.textLowValueT.setText(""+QR.currEntry.lowScoredTeleop);
+        binding.textHighValueT.setText(""+QR.currEntry.highScoredTeleop);
+        binding.textLowMissedValueT.setText(""+QR.currEntry.lowMissedTeleop);
+        binding.textViewTimer.setText("" + QR.currEntry.getStoredClimbTime());
+
 
         binding.textUserInfoT.setText(""+"Name: " + QR.currEntry.scoutName + "\nScouting: " +
                 QR.currEntry.teamScouting + "\nColor: " +
@@ -284,6 +293,8 @@ public class TeleopFragment  extends Fragment {
 
         });
 
+        onlyOneChecked(QR.currEntry.climbLevel);
+
         return binding.getRoot();
     }
 
@@ -293,31 +304,36 @@ public class TeleopFragment  extends Fragment {
             cMidClimb.setChecked(false);
             cHighClimb.setChecked(false);
             cTraversalClimb.setChecked(false);
-
+            cNoClimb.setChecked(true);
         }
         else if (recent == 1) {
             cNoClimb.setChecked(false);
             cMidClimb.setChecked(false);
             cHighClimb.setChecked(false);
             cTraversalClimb.setChecked(false);
+            cLowClimb.setChecked(true);
+
         }
         else if (recent == 2) {
             cLowClimb.setChecked(false);
             cNoClimb.setChecked(false);
             cHighClimb.setChecked(false);
             cTraversalClimb.setChecked(false);
+            cMidClimb.setChecked(true);
         }
         else if (recent == 3) {
             cLowClimb.setChecked(false);
             cMidClimb.setChecked(false);
             cNoClimb.setChecked(false);
             cTraversalClimb.setChecked(false);
+            cHighClimb.setChecked(true);
         }
         else if (recent == 4) {
             cLowClimb.setChecked(false);
             cMidClimb.setChecked(false);
             cHighClimb.setChecked(false);
             cNoClimb.setChecked(false);
+            cTraversalClimb.setChecked(true);
         }
     }
 

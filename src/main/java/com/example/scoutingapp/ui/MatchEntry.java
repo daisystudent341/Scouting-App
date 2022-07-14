@@ -23,10 +23,10 @@ public class MatchEntry {
     public int highMissedTeleop = 0;
     public int lowScoredTeleop = 0;
     public int lowMissedTeleop = 0;
-    public double climbTime = 0;
+    public double climbTime = 0.00;
     public int climbLevel = 0; // 0 (no climb) to 4 (traversal)
 
-    private long climbStartMS = 0;
+    private long climbStartMS = -1;
 
 
     private final String[] climb = {"No", "Low", "Mid", "High", "Traversal"};
@@ -44,6 +44,9 @@ public class MatchEntry {
         climbTime = (double)(System.currentTimeMillis() - climbStartMS) / 1000.0f;
     }
 
+    public String getStoredClimbTime() {
+        return formatTo2(climbTime);
+    }
 
     private int boolToBinary(boolean x) {
         return (x ? 1 : 0);

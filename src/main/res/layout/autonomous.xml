@@ -23,13 +23,13 @@
 
 
     <Button
-        android:id="@+id/button_HighPlus"
+        android:id="@+id/button_HighMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
         android:layout_gravity="end"
-        android:text="+"
+        android:text="-"
         android:textSize="90dp" />
 
     <TextView
@@ -43,14 +43,14 @@
         android:textSize="90dp" />
 
     <Button
-        android:id="@+id/button_HighMinus"
+        android:id="@+id/button_HighPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="2"
 
 
-        android:text="-"
+        android:text="+"
         android:textSize="90dp" />
 
     <TextView
@@ -65,13 +65,13 @@
         android:textSize="35dp" />
 
     <Button
-        android:id="@+id/button_LowPlus"
+        android:id="@+id/button_lowMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="3"
         android:layout_marginStart="50dp"
-        android:text="+"
+        android:text="-"
         android:textSize="90dp" />
 
     <TextView
@@ -87,13 +87,13 @@
 
 
     <Button
-        android:id="@+id/button_lowMinus"
+        android:id="@+id/button_LowPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="5"
 
-        android:text="-"
+        android:text="+"
         android:textSize="90dp" />
 
     <TextView
@@ -106,12 +106,12 @@
         android:textSize="35dp" />
 
     <Button
-        android:id="@+id/button_HighMissedMinus"
+        android:id="@+id/button_HighMissedPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="2"
-        android:text="-"
+        android:text="+"
         android:textSize="90dp" />
 
     <TextView
@@ -125,23 +125,23 @@
         android:textSize="90dp" />
 
     <Button
-        android:id="@+id/button_HighMissedPlus"
+        android:id="@+id/button_HighMissedMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="0"
         android:layout_gravity="end"
-        android:text="+"
+        android:text="-"
         android:textSize="90dp" />
 
     <Button
-        android:id="@+id/button_LowMissedPlus"
+        android:id="@+id/button_LowMissedMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="3"
         android:layout_marginStart="50dp"
-        android:text="+"
+        android:text="-"
         android:textSize="90dp" />
 
     <TextView
@@ -167,12 +167,12 @@
         android:textSize="90dp" />
 
     <Button
-        android:id="@+id/button_LowMissedMinus"
+        android:id="@+id/button_LowMissedPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="3"
         android:layout_column="5"
-        android:text="-"
+        android:text="+"
         android:textSize="90dp" />
 
 
