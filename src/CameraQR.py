@@ -39,7 +39,7 @@ class CameraQR:
         self._num_cameras = 0
         self.updateCameraCount()
         print(self._num_cameras)
-        self._cam_chosen = 0
+        self._cam_chosen = 1
         self._cap = cv2.VideoCapture(self._cam_chosen, cv2.CAP_DSHOW)
       
         self._data = None
@@ -56,6 +56,7 @@ class CameraQR:
                 return str(i.data.decode('utf-8'))
 
          except Exception as e:
+            print(e)
             return None
 
          return None

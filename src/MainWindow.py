@@ -7,9 +7,13 @@ from CameraQR import CameraQR
 from DataHandler import DataHandler
 import pickle
 import queue, time
+import paramiko
 
+paramiko.Transport.banner_timeout=300
+
+
+dataHandler = DataHandler("./src/pass.json")
 camera = CameraQR()
-dataHandler = DataHandler("./src/pass.txt")
 
 q = queue.Queue()
 
@@ -183,7 +187,6 @@ class MainWindow(QWidget):
         else:
             cur_set = loaded_pit_set
             data = dataHandler._pit_data
-
         
         self.CachedLabel.setRowCount(len(cur_set))
         self.CachedLabel.setColumnCount(len(data))
@@ -215,7 +218,7 @@ class MainThread(QThread):
 
             data = camera.getRawData()
             
-            if data:
+            if data is not None:
                 data = dataHandler.unpack_raw_str(data)
                 for el in data:
                     q.put(el)
