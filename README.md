@@ -14,7 +14,7 @@ Frontend and Backend for Team 341 Scouting App
      - ```pip install PyQt5```
      - ```pip install pyzbar```
    - Run ```ScoutingApp.exe```
-     - Enter password for mongodb data read/write perms
+     - If needed, create a pass.json file in specified src location with entires specified in the runnable to access db.
      - A new window should pop up and you should be set!
      
    ## Features ##
