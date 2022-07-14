@@ -20,7 +20,7 @@ int main() {
     "ssh_user": "",
     "ssh_pass": "",
     "us": "",
-    "pass": "!"
+    "pass": ""
     })";
     }
     
