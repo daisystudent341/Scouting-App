@@ -9,7 +9,7 @@ Frontend and Backend for Team 341 Scouting App
    - Install python 3.9 (if not already installed)
    - Install pip for python 3.9 (if not already installed)
    - Pip install the dependencies found in dependencies.txt:
-     Examples:
+     - Examples:
      - ```pip install opencv-python```
      - ```pip install PyQt5```
      - ```pip install pyzbar```
