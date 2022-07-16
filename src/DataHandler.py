@@ -121,14 +121,8 @@ class DataHandler:
 
         
         self.SUB_SEP = 'ｦ'
-        if self.internet_connection():
-           self.reconnect()
-           
-           
+        self.reconnect()
 
-        else:
-            
-            self.alive = False
 
  
 
@@ -139,7 +133,7 @@ class DataHandler:
             try:
                 dt = ["'"+self.COMP+"'"]
 
-                for key, val in udata.items():
+                for _, val in udata.items():
                     try:
                         float(val)
                         dt.append(val)
@@ -149,14 +143,14 @@ class DataHandler:
                 r = "MATCH_DATA"
                 if typ=="P":
                     r="PIT_DATA"
-                self.run_query(self.add_query(r, dt))
+                self.add_query(r, dt)
 
                 
                 return typ,0, udata
 
             except Exception as e:
                 self.alive = False
-                print(e)
+                print("err", e)
                 # could not send data
                 return typ,-1, udata
         elif udata:
@@ -176,26 +170,27 @@ class DataHandler:
         return None
     
     def client_alive(self):
-            try:
-                if self._client.connection.open:
-                    print("CONNECTION OPEN")
-                    self.alive = True
-                    return
-            except Exception as e:
-                print("ATTEMPTING TO RECONNECT")
-                self.reconnect()
+            self.reconnect()
 
     def internet_connection(self):
+        import urllib.request
         try:
-            _ = requests.get('https://www.team341.com', timeout=(5,5))
+            urllib.request.urlopen('https://team341.com', timeout=2)
             return True
         except:
-            print("No internet connection available.")
-        return False
+            return False
     
     def reconnect(self):
         if self.internet_connection():
-            try:    
+            try:
+                try:
+                    self.tunnel.close()
+                    self._client.close()
+                    self._cursor.close()
+                except:
+                    pass
+
+                
                 self.tunnel = sshtunnel.SSHTunnelForwarder(
                     ('team341.com', 22),
                     ssh_username=self.sh_us,
@@ -216,15 +211,13 @@ class DataHandler:
                 print('connected!')
 
             except Exception as ee:
-                print(ee)
+                print('threw: ',ee)
                 self.alive = False
-                self.tunnel.stop()
-                print('HERE')
         else:
             self.alive = False
 
             
-    def saveColumnNames(self, exclude=None):
+    def saveColumnNames(self):
         r = self.run_query('DESCRIBE TABLE MATCH_DATA')
         if r:
             print(r)
