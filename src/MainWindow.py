@@ -287,7 +287,7 @@ class NetworkThread(QThread):
         while self.ThreadActive:
             dataHandler.client_alive()
             self.NetworkStatusUpdate.emit(dataHandler.alive)
-            time.sleep(2)
+            time.sleep(5)
             
 
             

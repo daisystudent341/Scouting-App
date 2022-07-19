@@ -1,4 +1,5 @@
 from distutils.sysconfig import EXEC_PREFIX
+from typing import List
 import mysql.connector
 import sshtunnel
 import pymysql
@@ -8,19 +9,23 @@ import pandas
 
 ADDQ = '''INSERT IGNORE INTO {} VALUES ({});'''
 GETQ = '''SELECT * FROM {} WHERE {}'''
+DISTINCTQ = '''SELECT DISTINCT {} FROM {}'''
 
 class DataHandler:
 
     def add_query(self, table, dataArr):
         self.run_query(ADDQ.format(table, ','.join(dataArr)))
 
-    def get_query(self, table, fields : dict()):
+    def get_query(self, table, filter : dict()):
         st = ""
-        for key, val in fields.items():
+        for key, val in filter.items():
             st += str(key) + '="' + str(val) + '" AND '
         st = st.removesuffix(' AND ')
         print(GETQ.format(table, st))
         return self.run_query(GETQ.format(table, st), get=True)
+    
+    def get_distinct_query(self, table, columns : List[str]):
+        return self.run_query(DISTINCTQ.format(','.join(columns), table), get=True)
 
     def _unpackMatchData(self, data):
         ret = dict()
@@ -105,12 +110,13 @@ class DataHandler:
             self.sh_pass = data['ssh_pass']
             self.us = data['us']
             self.passw = data['pass']
+            self.COMP = data['competition_name']
+
 
 
         self.alive = True
         self.SEP = 'ｧ'
         self.MAX_FORMAT_LEN = 45
-        self.COMP = "COMP_NAME"
         self._stored_data = open('./bin/match_cols.txt').readline().split(',')
 
         self._stored_data.pop(0)
@@ -161,12 +167,20 @@ class DataHandler:
             return "",-2, None
 
     def run_query(self, q, get=False):
-        if self.alive:
-            self._cursor.execute(query=q)
-            if get:
-                res = self._cursor.fetchall()
-                return res
-            self._client.commit()
+        try:
+            if self.alive:
+
+                self._cursor.execute(query=q)
+                if get:
+                    res = self._cursor.fetchall()
+                    self._client.commit()
+
+                    return res
+                self._client.commit()
+            else:
+                return None
+        except Exception as e:
+            print("error running query", e)
         return None
     
     def client_alive(self):
@@ -179,6 +193,9 @@ class DataHandler:
             return True
         except:
             return False
+
+
+
     
     def reconnect(self):
         if self.internet_connection():
