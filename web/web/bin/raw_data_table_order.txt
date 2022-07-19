@@ -1,0 +1,3 @@
+AUTONOMOUS 6 #fff2cc
+TELEOPERATED 4 #c9daf8
+ENDGAME 2 #e8acdf

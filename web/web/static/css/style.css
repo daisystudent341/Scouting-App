@@ -2,6 +2,7 @@
     overflow-x: hidden;
  }
 
+
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -45,44 +46,48 @@
 
 
 
-
-.dataframe.styled-table {
-  overflow-x: scroll !important;
-  text-align: center;
-  border-collapse: collapse;
+[id^="T_styled-table"][id$="_dummy"] {
+  display: block;
+  overflow-x: auto;
   margin: 25px 0;
-  font-size: 0.9em;
+  border-collapse: collapse;
   font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  font-size: 13.15px;
 }
 
-.dataframe.styled-table thead tr {
+
+
+
+[id^="T_styled-table"][id$="_dummy"] thead tr {
   background-color: #009879;
   color: #ffffff;
+  
   text-align: center;
 }
 
-.styled-table th,
-.styled-table td {
-  max-width: 200px;
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
+[id^="T_styled-table"][id$="_dummy"] th,
+[id^="T_styled-table"][id$="_dummy"] td {
+  padding: 12px 5px;
   text-align: center;
-  border-bottom: 1px solid #dddddd;
+  border: thin groove black;
+
+
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+
+[id^="T_styled-table"][id$="_dummy"] tbody tr {
+  text-align: center;
 }
 
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+
+
+[id^="T_styled-table"][id$="_dummy"] tbody tr:last-of-type {
+  border-bottom: thin solid #009879;
 }
 
-.styled-table tbody tr.active-row {
+[id^="T_styled-table"][id$="_dummy"] tbody tr:hover {
   font-weight: bold;
-  color: #009879;
-}
+  filter: brightness(115%);
+} 
+
+
